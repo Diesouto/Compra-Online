@@ -15,13 +15,25 @@ public class Menu {
     
     public BufferedReader lee = new BufferedReader(new InputStreamReader(System.in)); 
     
+    public int menuInicial() throws IOException{
+        
+        System.out.println("----JAVIEXPRESS SHOP--- \n"
+                + "1. Crear usuario \n"
+                + "2. Iniciar sesión \n"
+                + "3. Salir del programa\n");
+        
+        int seleccion = Integer.parseInt(lee.readLine());
+        
+        return seleccion;
+    }
+    
     public int menuPrincipal() throws IOException{
         
         System.out.println("----MENÚ PRINCIPAL--- \n"
                 + "1. Ver productos \n"
                 + "2. Ver cesta \n"
                 + "3. Modificar usuario \n"
-                + "4. Salir del programa\n");
+                + "4. Cerrar sesión\n");
         
         int seleccion = Integer.parseInt(lee.readLine());
         
