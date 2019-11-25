@@ -7,12 +7,14 @@ package POJOS;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.io.Serializable;
+
 
 /**
  *
  * @author Diego
  */
-public class Cesta {
+public class Cesta implements Serializable{
     
     private int id_cesta;
     private Date fechaAñadido;
