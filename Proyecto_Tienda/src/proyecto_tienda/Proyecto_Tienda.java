@@ -5,6 +5,8 @@
  */
 package proyecto_tienda;
 
+import java.io.IOException;
+import metodos.*;
 /**
  *
  * @author a18oscarbg
@@ -14,8 +16,30 @@ public class Proyecto_Tienda {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws IOException {
+        
+        /*switch(Menu.menuInicial()){
+            case 1:
+                break;
+        
+            case 2:
+                break;
+        
+            case 3:
+                break;    
+        
+        }*/
+        
+        switch(Menu.menuInicial()){
+            case 1:
+                break;
+        
+            case 2:
+                break;
+        
+            case 3:
+                break; 
+        }
     }
     
 }

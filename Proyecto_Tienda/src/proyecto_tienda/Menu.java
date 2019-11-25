@@ -13,9 +13,9 @@ import java.io.*;
  */
 public class Menu {
     
-    public BufferedReader lee = new BufferedReader(new InputStreamReader(System.in)); 
+    public static BufferedReader lee = new BufferedReader(new InputStreamReader(System.in)); 
     
-    public int menuInicial() throws IOException{
+    public static int menuInicial() throws IOException{
         
         System.out.println("----JAVIEXPRESS SHOP--- \n"
                 + "1. Crear usuario \n"
@@ -27,7 +27,7 @@ public class Menu {
         return seleccion;
     }
     
-    public int menuPrincipal() throws IOException{
+    public static int menuPrincipal() throws IOException{
         
         System.out.println("----MENÚ PRINCIPAL--- \n"
                 + "1. Ver productos \n"
@@ -40,7 +40,7 @@ public class Menu {
         return seleccion;
     }
     
-    public int menuProducto() throws IOException{
+    public static int menuProducto() throws IOException{
         
         System.out.println("----MENÚ PRODUCTO--- \n"
                 + "1. Añadir al carro \n"
@@ -53,7 +53,7 @@ public class Menu {
         return seleccion;
     }
     
-    public int menuCesta() throws IOException{
+    public static int menuCesta() throws IOException{
         
         System.out.println("----MENÚ CESTA--- \n"
                 + "1. Comprar \n"
@@ -65,7 +65,7 @@ public class Menu {
         return seleccion;
     }
     
-    public int menuUsuario() throws IOException{
+    public static int menuUsuario() throws IOException{
         
         System.out.println("----MENÚ USUARIO--- \n"
                 + "1. Modificar nombre \n"
