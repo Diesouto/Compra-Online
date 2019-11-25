@@ -41,18 +41,52 @@ public class Altas {
         String nombre = lee.readLine();
         System.out.print("Apellidos: ");
         String apellidos = lee.readLine();
-        System.out.print("DNI: ");
-        String dni = lee.readLine();
+        String dni = Validar.dni();
         System.out.print("Correo electrónico: ");
         String correo = lee.readLine();
         System.out.print("Fecha de nacimiento: ");
-        //Date fecha_nacimiento = Validar.fechaNacimiento;
-        System.out.print("Telefono (Opcional):");
-        String telefono = lee.readLine();
+        Date fecha_nacimiento = Validar.fechaNacimiento;
+        String telefono = Validar.telefono();
         
-        //Cliente cliente = new Cliente(nombre, apellidos, dni, correo, fecha_nacimiento);
+        Cliente cliente = new Cliente(nombre, apellidos, dni, correo, fecha_nacimiento);
         
         return cliente;
+    }
+    
+    public static void addTarjeta(Cliente cliente) throws IOException{
+        
+        System.out.println("AÑADIR TARJETA");
+        System.out.print("Número de tarjeta: ");
+        String numero = lee.readLine();
+        System.out.print("Contraseña: ");
+        int contraseña = Integer.parseInt(lee.readLine());
+        System.out.print("Fecha vencimiento: ");
+        Date fechaVencimiento = lee.readLine();
+        System.out.print("Nombre del propietario: ");
+        String nombre = lee.readLine();
+        
+        Tarjeta tarjeta = new Tarjeta(numero, contraseña, fechaVencimiento, nombre);
+        
+        cliente.setTarjeta(tarjeta);
+    }
+    
+    public static void addDireccion(Cliente cliente) throws IOException{
+        
+        System.out.println("AÑADIR DIRECCION");
+        System.out.print("Nombre de la calle: ");
+        String calle = lee.readLine();
+        System.out.print("Número de la calle: ");
+        int num_calle = Integer.parseInt(lee.readLine());
+        System.out.print("Código postal: ");
+        int cod_postal = Integer.parseInt(lee.readLine());
+        System.out.print("Ciudad: ");
+        String ciudad = lee.readLine();
+        System.out.print("País: ");
+        String pais = lee.readLine();
+        
+        Direccion direccion = new Direccion(calle, num_calle, cod_postal, ciudad, pais);
+        
+        cliente.setDireccion(direccion);
     }
     
 }
