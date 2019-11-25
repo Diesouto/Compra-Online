@@ -5,6 +5,8 @@
  */
 package POJOS;
 
+import java.util.Date;
+
 /**
  *
  * @author a18oscarbg
@@ -15,5 +17,10 @@ public class Cliente {
     private String apellidos;
     private String dni;
     private String correo_electronico;
+    private Direccion direccion;
+    private Date fecha_nacimiento;
+    private Cuenta usuario;
+    private String telefono;
+    private Tarjeta tarjeta;
     
 }
