@@ -10,13 +10,15 @@ public class Cuenta implements Serializable {
     
     private String contraseña;
     private String correo_electronico;
+    private Cliente cliente;
 
     public Cuenta() {
     }
 
-    public Cuenta(String contraseña, String correo_electronico) {
+    public Cuenta(String contraseña, String correo_electronico, Cliente cliente) {
         this.contraseña = contraseña;
         this.correo_electronico = correo_electronico;
+        this.cliente= cliente;
     }
 
     public String getContraseña() {

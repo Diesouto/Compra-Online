@@ -19,7 +19,6 @@ public class Cliente {
     private String correo_electronico;
     private Direccion direccion;
     private Date fecha_nacimiento;
-    private Cuenta usuario;
     private String telefono;
     private Tarjeta tarjeta;
 
@@ -32,11 +31,7 @@ public class Cliente {
         this.apellidos = apellidos;
         this.dni = dni;
         this.correo_electronico = correo_electronico;
-        this.direccion = direccion;
         this.fecha_nacimiento = fecha_nacimiento;
-        this.usuario = usuario;
-        this.telefono = telefono;
-        this.tarjeta = tarjeta;
     }
 
     public String getNombre() {
@@ -87,14 +82,6 @@ public class Cliente {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
-    public Cuenta getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Cuenta usuario) {
-        this.usuario = usuario;
-    }
-
     public String getTelefono() {
         return telefono;
     }
@@ -110,7 +97,5 @@ public class Cliente {
     public void setTarjeta(Tarjeta tarjeta) {
         this.tarjeta = tarjeta;
     }
-    
-    
     
 }
