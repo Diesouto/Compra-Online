@@ -59,9 +59,14 @@ public class Cesta {
     }
     
     public void calcularPrecio(ArrayList<Producto> productos){
-        for(int i: productos){
-            
+        
+        float precioTotal=0;
+        
+        for(int i=0; i< productos.size(); i++){
+            precioTotal+=productos.get(i).getPrecio();
         }
+        
+        System.out.print("Precio de la cesta es: " +precioTotal);
     }
     
 }
