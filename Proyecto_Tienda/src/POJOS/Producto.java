@@ -1,5 +1,6 @@
 package POJOS;
 
+import JavaBeans.Proveedor;
 import java.io.Serializable;
 
 /**
