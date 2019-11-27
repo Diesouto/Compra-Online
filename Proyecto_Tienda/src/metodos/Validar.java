@@ -6,6 +6,8 @@
 package metodos;
 import MisExcepciones.MisExcepciones;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import static metodos.Altas.lee;
 /**
  *
@@ -83,5 +85,15 @@ public class Validar {
         return telefono;
     }
     
+    public static boolean validarFecha(String fecha) {
+        try {
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+            formatoFecha.setLenient(false);
+            formatoFecha.parse(fecha);
+        } catch (ParseException e) {
+          return false;
+        }
+        return true;
+    }
 }
 
