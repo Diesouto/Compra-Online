@@ -45,7 +45,7 @@ public class Altas {
         System.out.print("Correo electrónico: ");
         String correo = lee.readLine();
         System.out.print("Fecha de nacimiento: ");
-        Date fecha_nacimiento = Validar.fechaNacimiento;
+        Date fecha_nacimiento = Validar.validarFecha();
         String telefono = Validar.telefono();
         
         Cliente cliente = new Cliente(nombre, apellidos, dni, correo, fecha_nacimiento);
@@ -61,7 +61,7 @@ public class Altas {
         System.out.print("Contraseña: ");
         int contraseña = Integer.parseInt(lee.readLine());
         System.out.print("Fecha vencimiento: ");
-        Date fechaVencimiento = lee.readLine();
+        Date fechaVencimiento = Validar.validarFecha();
         System.out.print("Nombre del propietario: ");
         String nombre = lee.readLine();
         
