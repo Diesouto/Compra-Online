@@ -8,6 +8,7 @@ import MisExcepciones.MisExcepciones;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import static metodos.Altas.lee;
 /**
  *
@@ -85,7 +86,7 @@ public class Validar {
         return telefono;
     }
     
-    public static boolean validarFecha(String fecha) {
+    public static boolean validarFechaJavi(String fecha) {
         try {
             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
             formatoFecha.setLenient(false);
@@ -95,5 +96,20 @@ public class Validar {
         }
         return true;
     }
+    
+    public static Date validarFecha() throws IOException {
+        
+        Date fechaVencimiento = null;
+        
+        try {
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+            fechaVencimiento = formatoFecha.parse(lee.readLine());
+            formatoFecha.setLenient(false);
+        } catch (ParseException e) {
+          System.out.println(e);
+        }
+        return fechaVencimiento;
+    }
 }
+
 

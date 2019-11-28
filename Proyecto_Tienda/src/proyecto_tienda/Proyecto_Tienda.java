@@ -8,7 +8,9 @@ package proyecto_tienda;
 import hibernate.PruebaGuardado;
 import metodos.Menu;
 import java.io.IOException;
+import java.sql.*;
 import metodos.*;
+import MisExcepciones.*;
 /**
  *
  * @author a18oscarbg
@@ -26,17 +28,27 @@ public class Proyecto_Tienda {
             case 1:
                 break;
         
-            case 2:
-                break;
-        
-            case 3:
-                break;    
-        
+        try{
+            Connection con = DriverManager.getConnection(url);
+            Statement stm = con.createStatement();
+
+            do{
+                switch(Menu.menuInicial()){
+                    case 1:
+                        Altas.crearCuenta();
+                        break;
+
+                    case 2:
+                        break;
+
+                    case 3:
+                        salir = true;
+                        break;    
+
+                }
+            }while(salir!=true);
+        }catch(Exception e){
+            System.out.println(e);
         }*/
-        
-        
-        
-        
     }
-    
 }
