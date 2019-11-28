@@ -11,6 +11,7 @@ import javax.persistence.Id;
 @Entity
 public class Cuenta implements Serializable {
     private String contraseña;
+    
     @Id
     private String correo_electronico;
     private Cliente cliente;

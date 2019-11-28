@@ -2,19 +2,26 @@ package POJOS;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  *
  * @author a16f.jls
  */
 @Entity
+@Table (name = "Tarjeta")
 public class Tarjeta implements Serializable {
     @Id
+    @Column (name = "num_tarjeta")
     private String num_tarjeta;
+    
+    @Column (name = "clave")
     private int clave;
+    
+    @Column (name = "fecha_vencimiento")
     private Date fecha_vencimiento;
+    
+    @Column (name = "nombre_propiet")
     private String nombre_propiet;
 
     public Tarjeta() {

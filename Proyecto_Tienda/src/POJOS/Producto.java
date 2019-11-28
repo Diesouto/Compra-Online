@@ -2,21 +2,33 @@ package POJOS;
 
 import JavaBeans.Proveedor;
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  *
  * @author Diego
  */
 @Entity
+@Table (name = "Producto")
 public class Producto implements Serializable{
     @Id
+    @GeneratedValue
+    @Column (name = "idProducto")
     private int idProducto;
+    
+    @Column (name = "precio")
     private float precio;
+    
+    @Column (name = "stock")
     private int stock;
+    
+    @Column (name = "nombre")
     private String nombre;
+    
+    @Column (name = "descripcion")
     private String descripcion;
+    
+    @Column (name = "proveedor")
     private Proveedor proveedor;
 
     public Producto(int idProducto, float precio, int stock, String nombre, String descripcion, Proveedor proveedor) {

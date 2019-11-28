@@ -7,8 +7,7 @@ package POJOS;
 
 import java.util.Date;
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 /**
@@ -16,17 +15,32 @@ import javax.persistence.Id;
  * @author a18oscarbg
  */
 @Entity
+@Table(name = "Cliente")
 public class Cliente implements Serializable{
     
-    
+    @Column (name = "nombre")
     private String nombre;
+    
+    @Column (name = "apellidos")
     private String apellidos;
+    
     @Id
+    @Column (name = "dni", unique = true)
     private String dni;
+    
+    @Column (name = "correo_electronico", unique = true)
     private String correo_electronico;
+    
+    @Column (name = "direccion")
     private Direccion direccion;
+    
+    @Column (name = "fecha_nacimiento")
     private Date fecha_nacimiento;
+    
+    @Column (name = "telefono", unique = true)
     private String telefono;
+    
+    @Column (name = "tarjeta")
     private Tarjeta tarjeta;
 
     public Cliente() {

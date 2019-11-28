@@ -1,21 +1,30 @@
 package POJOS;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  *
  * @author Usuario
  */
 @Entity
+@Table (name = "Direccion")
 public class Direccion implements Serializable{
     @Id
+    @Column (name = "calle")
     private String calle;
+    
     @Id
+    @Column (name = "num_calle")
     private int num_calle;
+    
+    @Column (name = "cod_postal")
     private int cod_postal;
+    
+    @Column (name = "ciudad")
     private String ciudad;
+    
+    @Column (name = "pais")
     private String pais;
 
     public Direccion() {

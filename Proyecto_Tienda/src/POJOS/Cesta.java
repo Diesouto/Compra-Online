@@ -8,8 +8,7 @@ package POJOS;
 import java.util.ArrayList;
 import java.util.Date;
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 /**
@@ -17,12 +16,21 @@ import javax.persistence.Id;
  * @author Diego
  */
 @Entity
+@Table (name = "Cesta")
 public class Cesta implements Serializable{
     
     @Id
+    @GeneratedValue
+    @Column (name = "id_cesta")
     private int id_cesta;
+    
+    @Column (name = "fechaAñadido")
     private Date fechaAñadido;
+    
+    @Column (name = "contadorProductos")
     private int contadorProductos;
+    
+    @Column (name = "productos")
     private ArrayList <Producto> productos;
 
     public Cesta(int id_cesta, Date fechaAñadido, int contadorProductos, ArrayList<Producto> productos) {
