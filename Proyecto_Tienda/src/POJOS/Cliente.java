@@ -39,6 +39,16 @@ public class Cliente implements Serializable{
         this.dni = dni;
         this.correo_electronico = correo_electronico;
         this.fecha_nacimiento = fecha_nacimiento;
+        this.telefono = telefono;
+    }
+    // Este es de prueba
+    public Cliente(String nombre, String apellidos, String dni, String correo_electronico, String telefono) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.dni = dni;
+        this.correo_electronico = correo_electronico;
+        this.telefono = telefono;
+        
     }
 
     public String getNombre() {

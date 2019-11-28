@@ -19,6 +19,8 @@ public class Proyecto_Tienda {
      */
     public static void main(String[] args) throws IOException {
         
+        PruebaGuardado.guardarObjeto();
+        
         /*switch(Menu.menuInicial()){
             case 1:
                 break;
