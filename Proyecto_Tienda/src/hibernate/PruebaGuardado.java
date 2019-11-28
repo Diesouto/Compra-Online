@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto_tienda;
+package hibernate;
 
+import hibernate.HibernateUtil;
 import POJOS.Cliente;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

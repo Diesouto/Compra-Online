@@ -1,4 +1,4 @@
-package proyecto_tienda;
+package hibernate;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,8 +17,8 @@ public class HibernateUtil {
             Configuration con = new Configuration().configure();
             sessionFactory = con.buildSessionFactory();
         } catch (Throwable ex) {
-            System.err.println("Initial SessionFactory creation failed." + ex);
-            throw new ExceptionInInitializerError(ex);
+            
+            throw(ex);
         }
     }
 

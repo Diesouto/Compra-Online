@@ -5,6 +5,7 @@
  */
 package proyecto_tienda;
 
+import hibernate.PruebaGuardado;
 import metodos.Menu;
 import java.io.IOException;
 import metodos.*;
