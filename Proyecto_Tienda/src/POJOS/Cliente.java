@@ -7,16 +7,21 @@ package POJOS;
 
 import java.util.Date;
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 
 /**
  *
  * @author a18oscarbg
  */
+@Entity
 public class Cliente implements Serializable{
+    
     
     private String nombre;
     private String apellidos;
+    @Id
     private String dni;
     private String correo_electronico;
     private Direccion direccion;

@@ -2,13 +2,16 @@ package POJOS;
 
 import JavaBeans.Proveedor;
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
  * @author Diego
  */
+@Entity
 public class Producto implements Serializable{
-    
+    @Id
     private int idProducto;
     private float precio;
     private int stock;

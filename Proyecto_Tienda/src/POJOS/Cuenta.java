@@ -1,14 +1,17 @@
 package POJOS;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
  * @author Usuario
  */
+@Entity
 public class Cuenta implements Serializable {
-    
     private String contraseña;
+    @Id
     private String correo_electronico;
     private Cliente cliente;
 

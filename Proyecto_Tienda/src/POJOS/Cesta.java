@@ -8,14 +8,18 @@ package POJOS;
 import java.util.ArrayList;
 import java.util.Date;
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 
 /**
  *
  * @author Diego
  */
+@Entity
 public class Cesta implements Serializable{
     
+    @Id
     private int id_cesta;
     private Date fechaAñadido;
     private int contadorProductos;

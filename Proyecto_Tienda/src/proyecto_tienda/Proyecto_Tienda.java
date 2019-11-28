@@ -31,16 +31,9 @@ public class Proyecto_Tienda {
         
         }*/
         
-        switch(Menu.menuInicial()){
-            case 1:
-                break;
         
-            case 2:
-                break;
         
-            case 3:
-                break; 
-        }
+        
     }
     
 }
