@@ -10,11 +10,14 @@ import javax.persistence.*;
 @Entity
 @Table (name = "Cuenta")
 public class Cuenta implements Serializable {
-    private String contraseña;
     
     @Id
-    @Column (name = "correo_electronico")
+    @Column (name = "correo_electronico", length = 30)
     private String correo_electronico;
+    
+    @Column (name = "contraseña", length = 20)
+    private String contraseña;
+    
     private Cliente cliente;
 
     public Cuenta() {

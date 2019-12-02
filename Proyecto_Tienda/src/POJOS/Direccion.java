@@ -11,20 +11,20 @@ import javax.persistence.*;
 @Table (name = "Direccion")
 public class Direccion implements Serializable{
     @Id
-    @Column (name = "calle")
+    @Column (name = "calle", length = 30)
     private String calle;
     
     @Id
-    @Column (name = "num_calle")
+    @Column (name = "num_calle", length = 5)
     private int num_calle;
     
-    @Column (name = "cod_postal")
+    @Column (name = "cod_postal", length = 5)
     private int cod_postal;
     
-    @Column (name = "ciudad")
+    @Column (name = "ciudad", length = 15)
     private String ciudad;
     
-    @Column (name = "pais")
+    @Column (name = "pais", length = 15)
     private String pais;
 
     public Direccion() {

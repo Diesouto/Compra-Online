@@ -16,13 +16,13 @@ public class Producto implements Serializable{
     @Column (name = "idProducto")
     private int idProducto;
     
-    @Column (name = "precio")
+    @Column (name = "precio", length = 5)
     private float precio;
     
-    @Column (name = "stock")
+    @Column (name = "stock", length = 5)
     private int stock;
     
-    @Column (name = "nombre")
+    @Column (name = "nombre", length = 15)
     private String nombre;
     
     @Column (name = "descripcion")
