@@ -67,7 +67,7 @@ public class Altas {
         
         Tarjeta tarjeta = new Tarjeta(numero, contraseña, fechaVencimiento, nombre);
         
-        cliente.setTarjeta(tarjeta);
+        cliente.getTarjetas().add(tarjeta);
     }
     
     public static void addDireccion(Cliente cliente) throws IOException{
