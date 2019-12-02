@@ -1,15 +1,24 @@
 package JavaBeans;
 
 import java.io.Serializable;
+import javax.persistence.*;
 
 /**
  *
  * @author Usuario
  */
+@Entity
+@Table (name = "Proveedor")
 public class Proveedor implements Serializable {
     
+    @Id
+    @Column (name = "nombre")
     private String nombre;
+    
+    @Column (name = "direccion")
     private String direccion;
+    
+    @Column (name = "telefono")
     private String telefono;
 
     public Proveedor() {

@@ -7,6 +7,8 @@ package POJOS;
 
 import java.util.Date;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 
 
@@ -40,8 +42,8 @@ public class Cliente implements Serializable{
     @Column (name = "telefono", unique = true)
     private String telefono;
     
-    @Column (name = "tarjeta")
-    private Tarjeta tarjeta;
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "Cliente")
+    private List<Tarjeta> tarjetas;
 
     public Cliente() {
     }
@@ -54,6 +56,7 @@ public class Cliente implements Serializable{
         this.correo_electronico = correo_electronico;
         this.fecha_nacimiento = fecha_nacimiento;
         this.telefono = telefono;
+        this.tarjetas = new ArrayList<>();
     }
     // Este es de prueba
     public Cliente(String nombre, String apellidos, String dni, String correo_electronico, String telefono) {
@@ -121,12 +124,11 @@ public class Cliente implements Serializable{
         this.telefono = telefono;
     }
 
-    public Tarjeta getTarjeta() {
-        return tarjeta;
+    public List<Tarjeta> getTarjetas() {
+        return tarjetas;
     }
 
-    public void setTarjeta(Tarjeta tarjeta) {
-        this.tarjeta = tarjeta;
+    public void setTarjetas(List<Tarjeta> tarjetas) {
+        this.tarjetas = tarjetas;
     }
-    
 }
