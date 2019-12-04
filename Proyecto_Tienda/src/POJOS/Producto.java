@@ -22,7 +22,7 @@ public class Producto implements Serializable{
     @Column (name = "stock", length = 5)
     private int stock;
     
-    @Column (name = "nombre", length = 15)
+    @Column (name = "nombre", length = 30)
     private String nombre;
     
     @Column (name = "descripcion")
@@ -31,6 +31,9 @@ public class Producto implements Serializable{
     @Column (name = "proveedor")
     private Proveedor proveedor;
 
+    public Producto() {
+    }
+
     public Producto(int idProducto, float precio, int stock, String nombre, String descripcion, Proveedor proveedor) {
         this.idProducto = idProducto;
         this.precio = precio;
@@ -38,6 +41,17 @@ public class Producto implements Serializable{
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.proveedor = proveedor;
+    }
+
+    
+    
+    public Producto(/*int idProducto, */float precio, int stock, String nombre, String descripcion/*, Proveedor proveedor*/) {
+        //this.idProducto = idProducto;
+        this.precio = precio;
+        this.stock = stock;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        //this.proveedor = proveedor;
     }
 
     public int getIdProducto() {
@@ -87,6 +101,12 @@ public class Producto implements Serializable{
     public void setProveedor(Proveedor proveedor) {
         this.proveedor = proveedor;
     }
+
+    @Override
+    public String toString() {
+        return "Producto de Id: " + idProducto + "\n\tPrecio: " + precio + "\n\tStock: " + stock + "\n\tNombre: " + nombre + "\n\tDescripcion: " + descripcion + "\n\tProveedor: " + proveedor + '\n';
+    }
+    
     
     
 }

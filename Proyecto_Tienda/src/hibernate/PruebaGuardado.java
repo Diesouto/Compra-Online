@@ -15,12 +15,13 @@ import org.hibernate.Transaction;
  * @author a18oscarbg
  */
 public class PruebaGuardado {
-    public static void guardarObjeto(){
+    public static void guardarObjeto(Object objeto){
       Session sesion =  HibernateUtil.getSession();
       
-      Cliente javi = new Cliente("javi", "lorenzo", "77701083R", "javilorenzo@gmail.com","666666666");
+      
       Transaction tr = sesion.beginTransaction();
-      sesion.save(javi);
+      sesion.save(objeto);
       tr.commit();
+      sesion.close();
     }
 }

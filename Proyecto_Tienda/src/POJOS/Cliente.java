@@ -42,7 +42,7 @@ public class Cliente implements Serializable{
     @Column (name = "telefono", unique = true)
     private String telefono;
     
-    @OneToMany (cascade = CascadeType.ALL, mappedBy = "Cliente")
+    @OneToMany (cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Tarjeta> tarjetas;
 
     public Cliente() {
@@ -127,6 +127,7 @@ public class Cliente implements Serializable{
     public List<Tarjeta> getTarjetas() {
         return tarjetas;
     }
+    
 
     public void setTarjetas(List<Tarjeta> tarjetas) {
         this.tarjetas = tarjetas;
