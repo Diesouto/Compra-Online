@@ -15,19 +15,43 @@ public class Menu {
     
     public static BufferedReader lee = new BufferedReader(new InputStreamReader(System.in)); 
     
-    public static int menuInicial() throws IOException{
+    public static void menuInicial() throws IOException{
+        
+        byte op;
         
         System.out.println("----JAVIEXPRESS SHOP--- \n"
                 + "1. Crear usuario \n"
                 + "2. Iniciar sesión \n"
                 + "3. Salir del programa\n");
         
-        int seleccion = Integer.parseInt(lee.readLine());
+        op = Byte.parseByte(lee.readLine());
         
-        return seleccion;
+        do{
+            try{
+                switch(op){
+                    case 1:
+                        Altas.crearUsuario();
+                        break;
+                    case 2:
+//                        Bajas.bajas(lee);
+                        break;
+                    case 3:
+                        System.out.println("\n - FIN DEL PROGRAMA - \n");
+                        System.exit(0);
+                }
+                
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }   
+        } while(op!=3);
     }
+        
+       
     
-    public static int menuPrincipal() throws IOException{
+    
+    public static void menuPrincipal() throws IOException{
+        
+        byte op;
         
         System.out.println("----MENÚ PRINCIPAL--- \n"
                 + "1. Ver productos \n"
@@ -35,37 +59,100 @@ public class Menu {
                 + "3. Modificar usuario \n"
                 + "4. Cerrar sesión\n");
         
-        int seleccion = Integer.parseInt(lee.readLine());
+        op = Byte.parseByte(lee.readLine());
         
-        return seleccion;
-    }
+        do{
+            try{
+                switch(op){
+                    case 1:
+//                        Consultas.verProducto(lee);
+                        break;
+                    case 2:
+//                        Consultas.verCesta(lee);
+                        break;
+                    case 3:
+//                        Modificar.modificarUsuario();
+                        break;
+                    case 4:
+                        Menu.menuPrincipal();
+                        break;  
+                }
+                
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }        
+        } while(op!=4);
+    } 
+  
     
-    public static int menuProducto() throws IOException{
+    public static void menuProducto() throws IOException{
+        
+        Byte op;
         
         System.out.println("----MENÚ PRODUCTO--- \n"
-                + "1. Añadir al carro \n"
+                + "1. Añadir a la cesta \n"
                 + "2. Ver descripción \n"
                 + "3. Buscar producto \n"
                 + "4. Volver al menú \n");
         
-        int seleccion = Integer.parseInt(lee.readLine());
+       op = Byte.parseByte(lee.readLine());
         
-        return seleccion;
+        do{
+            try{
+                switch(op){
+                    case 1:
+                        break;
+                    case 2:
+//                        Consultas.verDescripcion();
+                        break;
+                    case 3:
+//                        Consultas.buscarProducto();
+                        break;
+                    case 4:
+                        Menu.menuPrincipal();
+                        break;
+                }
+                
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }        
+        } while(op!=4);
     }
     
-    public static int menuCesta() throws IOException{
+    public static void menuCesta() throws IOException{
+        
+        byte op;
         
         System.out.println("----MENÚ CESTA--- \n"
                 + "1. Comprar \n"
                 + "2. Eliminar artículos \n"
                 + "3. Volver al menú \n");
         
-        int seleccion = Integer.parseInt(lee.readLine());
+        op = Byte.parseByte(lee.readLine());
         
-        return seleccion;
-    }
+        do{
+            try{
+                switch(op){
+                    case 1:
+                        
+                        break;
+                    case 2:
+//                        Bajas.borrarArticulo();
+                        break;
+                    case 3:
+                          Menu.menuPrincipal();
+                          break;
+                }
+                
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }        
+        } while(op!=3);
+    }    
     
-    public static int menuUsuario() throws IOException{
+    public static void menuUsuario() throws IOException{
+        
+        Byte op;
         
         System.out.println("----MENÚ USUARIO--- \n"
                 + "1. Modificar nombre \n"
@@ -79,8 +166,44 @@ public class Menu {
                 + "9. Modificar tarjeta \n"
                 + "10. Volver al menú \n");
         
-        int seleccion = Integer.parseInt(lee.readLine());
+        op = Byte.parseByte(lee.readLine());
         
-        return seleccion;
-    }
+        do{
+            try{
+                switch(op){
+                    case 1:
+//                        Modificar.modificarNombre();
+                        break;
+                    case 2:
+//                        Modificar.modificarApellidos();
+                        break;
+                    case 3:
+//                        Modificar.modificarCorreo();
+                        break;
+                    case 4:
+//                        Modificar.modificarDNI();
+                        break;
+                    case 5:
+//                        Modificar.modificarFechaNacimiento();
+                        break;
+                    case 6:
+//                        Modificar.modificarDireccion();
+                        break;
+                    case 7:
+//                        Modificar.modificarUsuario();
+                        break;
+                    case 8:
+//                        Modificar.modificarTelefono();
+                        break;
+                    case 9:
+//                        Modificar.modificarTarjeta();
+                        break;
+                    case 10:
+                          Menu.menuPrincipal();
+                }
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }        
+        } while(op!=10);
+    } 
 }
