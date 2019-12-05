@@ -30,8 +30,7 @@ public class Altas {
         
         /*Falta comprobar que el nombre de usuario no está cogido*/
         Cuenta cuenta = new Cuenta (username, password, cliente);
-        
-        
+           
     }
     
     public static Cliente crearUsuario() throws IOException{
@@ -89,4 +88,20 @@ public class Altas {
         cliente.setDireccion(direccion);
     }
     
+    public static void insertProducto () throws IOException{
+        
+        System.out.println("INSERTAR PRODUCTO");
+        
+        System.out.print("Nombre deL producto: ");
+        String nombre = lee.readLine();
+        System.out.print("Precio del producto: ");
+        float precio = Float.parseFloat(lee.readLine());
+        System.out.print("Stock del producto");
+        int stock = Integer.parseInt(lee.readLine());
+        System.out.print("Descripcion del producto: ");
+        String descripcion = lee.readLine();
+        
+        Producto producto = new Producto(precio, stock, nombre, descripcion);
+        
+    }
 }
