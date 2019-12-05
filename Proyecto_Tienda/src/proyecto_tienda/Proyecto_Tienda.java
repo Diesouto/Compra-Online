@@ -29,7 +29,7 @@ public class Proyecto_Tienda {
         String eleccion = "";
         
         Altas.crearCuenta();
-        Visualizar.objeto("Cuenta");
+        Visualizar.clientes();
         
         
         

@@ -30,7 +30,7 @@ public class Cliente implements Serializable{
     private String dni;
     
     @Id
-    @Column (name = "correo_electronico", unique = true)
+    @Column (name = "correo_electronico", length = 50)
     private String correo_electronico;
     
     @Column (name = "direccion")
@@ -132,4 +132,17 @@ public class Cliente implements Serializable{
     public void setTarjetas(List<Tarjeta> tarjetas) {
         this.tarjetas = tarjetas;
     }
+
+    @Override
+    public String toString() {
+        return "Nombre=" + nombre
+                + "Apellidos=" + apellidos
+                + "Dni=" + dni
+                + "Correo_electronico=" + correo_electronico
+                + "Direccion=" + direccion
+                + "Fecha_nacimiento=" + fecha_nacimiento
+                + "Telefono=" + telefono
+                + "Tarjetas=" + tarjetas;
+    }
+    
 }
