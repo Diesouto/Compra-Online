@@ -45,7 +45,7 @@ public class Altas {
         String dni = Validar.dni();
         System.out.print("Correo electrónico: ");
         String correo = lee.readLine();
-        System.out.print("Fecha de nacimiento: ");
+        System.out.print("Fecha de nacimiento (xx/xx/xxxx): \n");
         Date fecha_nacimiento = Validar.validarFecha();
         String telefono = Validar.telefono();
         
@@ -90,4 +90,21 @@ public class Altas {
         cliente.setDireccion(direccion);
     }
     
+    public static void insertProducto () throws IOException{
+        
+        System.out.println("INSERTAR PRODUCTO");
+        
+        System.out.print("Nombre del producto: ");
+        String nombre = lee.readLine();
+        System.out.print("Precio del producto: ");
+        float precio = Float.parseFloat(lee.readLine());
+        System.out.print("Stock del producto");
+        int stock = Integer.parseInt(lee.readLine());
+        System.out.print("Descripcion del producto: ");
+        String descripcion = lee.readLine();
+        
+        Producto producto = new Producto(precio, stock, nombre, descripcion);
+        
+        Guardar.guardarObjeto(producto);
+    }
 }

@@ -87,7 +87,7 @@ public class Menu {
     
     public static void menuProducto() throws IOException{
         
-        Byte op;
+        byte op;
         
         System.out.println("----MENÚ PRODUCTO--- \n"
                 + "1. Añadir a la cesta \n"
@@ -152,7 +152,7 @@ public class Menu {
     
     public static void menuUsuario() throws IOException{
         
-        Byte op;
+        byte op;
         
         System.out.println("----MENÚ USUARIO--- \n"
                 + "1. Modificar nombre \n"
@@ -199,6 +199,51 @@ public class Menu {
 //                        Modificar.modificarTarjeta();
                         break;
                     case 10:
+                          Menu.menuPrincipal();
+                }
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }        
+        } while(op!=10);
+    }
+    
+    public static void menuAdministrador() throws IOException{
+        
+        byte op;
+        
+        System.out.println("----MENÚ ADMINISTRADOR--- \n"
+                + "1. Añadir productos \n"
+                + "2. Añadir proveedores \n"
+                + "3. Modificar productos \n"
+                + "4. Modificar proveedores \n"
+                + "5. Ver productos \n"
+                + "6. Ver proveedores \n"
+                + "7. Volver al menú \n");
+        
+        op = Byte.parseByte(lee.readLine());
+        
+        do{
+            try{
+                switch(op){
+                    case 1:
+//                        Modificar.modificarNombre();
+                        break;
+                    case 2:
+//                        Modificar.modificarApellidos();
+                        break;
+                    case 3:
+//                        Modificar.modificarCorreo();
+                        break;
+                    case 4:
+//                        Modificar.modificarDNI();
+                        break;
+                    case 5:
+//                        Modificar.modificarFechaNacimiento();
+                        break;
+                    case 6:
+//                        Modificar.modificarDireccion();
+                        break;
+                    case 7:
                           Menu.menuPrincipal();
                 }
             }catch(Exception e){

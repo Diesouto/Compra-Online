@@ -31,6 +31,8 @@ public class Proyecto_Tienda {
         Altas.crearCuenta();
         Visualizar.objeto("Cuenta");
         
+        
+        
         /*
         Query query = HibernateUtil.getSession().createQuery("SELECT p FROM Producto p");
         List<Producto> productos = query.list();
@@ -63,31 +65,6 @@ public class Proyecto_Tienda {
         javi.getTarjetas().add(tarjeta_javi);
         PruebaGuardado.guardarObjeto(javi);*/
         
-        /*switch(Menu.menuInicial()){
-            case 1:
-                break;
         
-        try{
-            Connection con = DriverManager.getConnection(url);
-            Statement stm = con.createStatement();
-
-            do{
-                switch(Menu.menuInicial()){
-                    case 1:
-                        Altas.crearCuenta();
-                        break;
-
-                    case 2:
-                        break;
-
-                    case 3:
-                        salir = true;
-                        break;    
-
-                }
-            }while(salir!=true);
-        }catch(Exception e){
-            System.out.println(e);
-        }*/
     }
 }
