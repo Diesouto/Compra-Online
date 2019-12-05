@@ -1,5 +1,6 @@
 package JavaBeans;
 
+import POJOS.Direccion;
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -15,8 +16,8 @@ public class Proveedor implements Serializable {
     @Column (name = "nombre")
     private String nombre;
     
-    @Column (name = "direccion")
-    private String direccion;
+    @OneToOne (cascade = CascadeType.ALL)
+    private Direccion direccion;
     
     @Column (name = "telefono")
     private String telefono;
@@ -24,7 +25,7 @@ public class Proveedor implements Serializable {
     public Proveedor() {
     }
 
-    public Proveedor(String nombre, String direccion, String telefono) {
+    public Proveedor(String nombre, Direccion direccion, String telefono) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
@@ -38,11 +39,11 @@ public class Proveedor implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getDireccion() {
+    public Direccion getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(String direccion) {
+    public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
     }
 
