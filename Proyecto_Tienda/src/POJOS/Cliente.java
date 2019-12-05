@@ -26,10 +26,10 @@ public class Cliente implements Serializable{
     @Column (name = "apellidos")
     private String apellidos;
     
-    @Id
     @Column (name = "dni", unique = true)
     private String dni;
     
+    @Id
     @Column (name = "correo_electronico", unique = true)
     private String correo_electronico;
     

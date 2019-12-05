@@ -6,6 +6,7 @@
 package metodos;
 
 import POJOS.*;
+import hibernate.Guardar;
 import java.io.*;
 import java.util.Date;
 
@@ -31,7 +32,7 @@ public class Altas {
         /*Falta comprobar que el nombre de usuario no está cogido*/
         Cuenta cuenta = new Cuenta (username, password, cliente);
         
-        
+        Guardar.guardarObjeto(cuenta);
     }
     
     public static Cliente crearUsuario() throws IOException{

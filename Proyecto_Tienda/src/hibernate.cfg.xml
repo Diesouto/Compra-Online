@@ -49,9 +49,13 @@ Contributor(s):
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
     
+    <mapping class="POJOS.Cesta"/>
     <mapping class="POJOS.Cliente"/>
+    <mapping class="POJOS.Cuenta"/>
+    <mapping class="POJOS.Direccion"/>
+    <!--<mapping class="POJOS.Producto"/>
+    <mapping class="POJOS.Factura"/>-->
     <mapping class="POJOS.Tarjeta"/>
-    <mapping class="POJOS.Producto"/>
 
   </session-factory>
 </hibernate-configuration>

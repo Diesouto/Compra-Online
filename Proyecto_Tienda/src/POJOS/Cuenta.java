@@ -12,12 +12,14 @@ import javax.persistence.*;
 public class Cuenta implements Serializable {
     
     @Id
-    @Column (name = "correo_electronico", length = 30)
+    @Column (name = "correo_electronico", length = 50)
     private String correo_electronico;
     
     @Column (name = "contraseña", length = 20)
     private String contraseña;
     
+    @OneToOne(cascade=CascadeType.ALL)
+    @PrimaryKeyJoinColumn
     private Cliente cliente;
 
     public Cuenta() {

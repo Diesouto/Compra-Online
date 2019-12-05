@@ -11,6 +11,7 @@ import hibernate.HibernateUtil;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.List;
+import metodos.Altas;
 import metodos.Visualizar;
 import org.hibernate.Query;
 /**
@@ -27,7 +28,8 @@ public class Proyecto_Tienda {
         BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
         String eleccion = "";
         
-        Visualizar.objeto("Producto");
+        Altas.crearCuenta();
+        Visualizar.objeto("Cuenta");
         
         /*
         Query query = HibernateUtil.getSession().createQuery("SELECT p FROM Producto p");

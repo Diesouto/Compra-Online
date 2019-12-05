@@ -14,11 +14,10 @@ import org.hibernate.Transaction;
  *
  * @author a18oscarbg
  */
-public class PruebaGuardado {
+public class Guardar {
     public static void guardarObjeto(Object objeto){
       Session sesion =  HibernateUtil.getSession();
-      
-      
+     
       Transaction tr = sesion.beginTransaction();
       sesion.save(objeto);
       tr.commit();
