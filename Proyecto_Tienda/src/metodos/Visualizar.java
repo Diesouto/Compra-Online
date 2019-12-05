@@ -5,7 +5,7 @@
  */
 package metodos;
 
-import POJOS.Producto;
+import POJOS.*;
 import hibernate.HibernateUtil;
 import java.util.List;
 import org.hibernate.Query;
@@ -16,11 +16,21 @@ import org.hibernate.Query;
  */
 public class Visualizar {
     
-    public static void objeto(String consulta){
-        Query query = HibernateUtil.getSession().createQuery("SELECT p FROM " +consulta +"p");
-        List<Object> objeto = query.list();
-        for(Object aux : objeto){
-            System.out.println(objeto.toString());
+    public static void productos(){
+        Query query = HibernateUtil.getSession().createQuery("SELECT p FROM Producto p");
+        List<Producto> productos = query.list();
+        for(Producto producto : productos){
+            System.out.println(producto.toString());
         }
+        HibernateUtil.cerrarSession();
+    }
+    
+    public static void clientes(){
+        Query query = HibernateUtil.getSession().createQuery("SELECT p FROM Cliente p");
+        List<Cliente> clientes = query.list();
+        for(Cliente cliente : clientes){
+            System.out.println(cliente.toString());
+        }
+        HibernateUtil.cerrarSession();
     }
 }
