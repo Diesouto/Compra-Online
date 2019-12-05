@@ -5,6 +5,7 @@
  */
 package metodos;
 
+import JavaBeans.Proveedor;
 import POJOS.*;
 import hibernate.Guardar;
 import java.io.*;
@@ -71,7 +72,7 @@ public class Altas {
         cliente.getTarjetas().add(tarjeta);
     }
     
-    public static void addDireccion(Cliente cliente) throws IOException{
+    public static Direccion insertDireccion() throws IOException{
         
         System.out.println("AÑADIR DIRECCION");
         System.out.print("Nombre de la calle: ");
@@ -87,10 +88,23 @@ public class Altas {
         
         Direccion direccion = new Direccion(calle, num_calle, cod_postal, ciudad, pais);
         
-        cliente.setDireccion(direccion);
+        return direccion;
     }
     
-    public static void insertProducto () throws IOException{
+    public static void insertProveedor() throws IOException{
+        System.out.println("INSERTAR PROVEEDOR");
+        System.out.println("nombre:");
+        String nombre = lee.readLine();
+        System.out.println("Direccion:");
+        Direccion direccion = insertDireccion();
+        System.out.println("Telefono: ");
+        String tlf = lee.readLine();
+        
+        Proveedor aux = new Proveedor(nombre,direccion,tlf);
+    }
+    
+    
+    public static void insertProducto() throws IOException{
         
         System.out.println("INSERTAR PRODUCTO");
         
