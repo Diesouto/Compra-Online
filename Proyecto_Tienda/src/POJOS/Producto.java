@@ -28,7 +28,7 @@ public class Producto implements Serializable{
     @Column (name = "descripcion")
     private String descripcion;
     
-    @Column (name = "proveedor")
+    @OneToOne
     private Proveedor proveedor;
 
     public Producto() {

@@ -55,9 +55,9 @@ public class Menu {
         
         System.out.println("----MENÚ PRINCIPAL--- \n"
                 + "1. Ver productos \n"
-                + "2. Ver cesta \n"
-                + "3. Modificar usuario \n"
-                + "4. Cerrar sesión\n");
+                + "2. Ver cesta y realizar compra \n"
+                + "3. Modificar datos usuario \n"
+                + "4. Cerrar sesión \n");
         
         op = Byte.parseByte(lee.readLine());
         

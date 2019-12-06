@@ -34,7 +34,44 @@ public class AccionesUsuario {
         List<Cuenta> cuentas = query.list();
         for(Cuenta cuenta : cuentas){
             if(correo.equalsIgnoreCase(cuenta.getCorreo_electronico())){
-                
+                if(contraseña.equalsIgnoreCase(cuenta.getContraseña())){
+                    Menu.menuPrincipal();
+                }
+                else{
+                    System.out.print("La contraseña introducida es incorrecta");
+                }
+            }
+            else {
+                System.out.print("El correo introducido es incorrecto");
+            }
+        }
+        HibernateUtil.cerrarSession();
+        
+    }
+    
+    public static void pruebaSesion(BufferedReader lee) throws IOException{
+        
+        boolean aimIn = false;
+        int comparar = 0;
+        
+        System.out.println("--INICIAR SESIÓN---");
+        System.out.print("Correo electrónico: ");
+        String correo = lee.readLine();
+        System.out.print("Contraseña: ");
+        String contraseña = lee.readLine();
+        
+        Session sesion =  HibernateUtil.getSession();
+        Query query = HibernateUtil.getSession().createQuery("SELECT p FROM Producto p");
+        List<Cuenta> cuentas = query.list();
+        for(Cuenta cuenta : cuentas){
+            if(correo.equalsIgnoreCase(cuenta.getCorreo_electronico())){
+                if(contraseña.equals(cuenta.getContraseña())){
+                    Menu.menuPrincipal();
+                }
+                else System.out.println("La contraseña es incorrecta.");
+            }
+            else {
+                System.out.print("El correo introducido es incorrecto");
             }
         }
         HibernateUtil.cerrarSession();

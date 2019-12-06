@@ -11,6 +11,7 @@ import hibernate.HibernateUtil;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.List;
+import metodos.AccionesUsuario;
 import metodos.Altas;
 import metodos.Visualizar;
 import org.hibernate.Query;
@@ -27,6 +28,9 @@ public class Proyecto_Tienda {
         
         BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
         String eleccion = "";
+        
+        Altas.insertProducto();
+        Visualizar.productos();
         
         Altas.crearCuenta();
         Visualizar.clientes();

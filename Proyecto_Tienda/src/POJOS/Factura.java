@@ -1,6 +1,7 @@
 package POJOS;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 /**
@@ -19,10 +20,13 @@ public class Factura implements Serializable{
     @Column (name = "idFactura")
     private int idFactura; 
     
+    @Column (name = "fechaCompra")
+    private Date fechaCompra; 
+    
     @Column (name = "precio")
     private float precio; 
     
-    @OneToMany (mappedBy = "Factura")
+    @OneToMany ()
     private List<Producto> productos;
     
 }

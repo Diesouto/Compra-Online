@@ -8,6 +8,7 @@ package POJOS;
 import java.util.ArrayList;
 import java.util.Date;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.*;
 
 
@@ -30,10 +31,11 @@ public class Cesta implements Serializable{
     @Column (name = "contadorProductos")
     private int contadorProductos;
     
-    @Column (name = "productos")
-    private ArrayList <Producto> productos;
+    /*No se pueden usar ArrayList en los mapeos*/
+    @OneToMany()
+    private List<Producto> productos;
 
-    public Cesta(int id_cesta, Date fechaAñadido, int contadorProductos, ArrayList<Producto> productos) {
+    public Cesta(int id_cesta, Date fechaAñadido, int contadorProductos, List<Producto> productos) {
         this.id_cesta = id_cesta;
         this.fechaAñadido = fechaAñadido;
         this.contadorProductos = contadorProductos;
@@ -64,15 +66,15 @@ public class Cesta implements Serializable{
         this.contadorProductos = contadorProductos;
     }
 
-    public ArrayList<Producto> getProductos() {
+    public List<Producto> getProductos() {
         return productos;
     }
 
-    public void setProductos(ArrayList<Producto> productos) {
+    public void setProductos(List<Producto> productos) {
         this.productos = productos;
     }
     
-    public void calcularPrecio(ArrayList<Producto> productos){
+    public void calcularPrecio(List<Producto> productos){
         
         float precioTotal=0;
         

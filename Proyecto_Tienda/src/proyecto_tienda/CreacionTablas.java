@@ -21,10 +21,9 @@ public class CreacionTablas {
             sentencia.execute("CREATE TABLE IF NOT EXISTS CLIENTE ("
                     + "nombre VARCHAR(15) NOT NULL, "
                     + "apellidos VARCHAR(25) NOT NULL, "
-                    + "correo_electronico VARCHAR(25) NOT NULL, "
-                    + "dni VARCHAR(25) PRIMARY KEY, "
+                    + "correo_electronico VARCHAR(25) PRIMARY KEY, "
+                    + "dni VARCHAR(25) NOT NULL, "
                     + "fechaNacimiento DATE NOT NULL, "
-                    + "direccion VARCHAR(30) NOT NULL, "
                     + "telefono VARCHAR(9) NULL, "
                     + "tarjeta Tarjeta NULL ;"
                     + "PRIMARY KEY (dni),"
@@ -32,7 +31,7 @@ public class CreacionTablas {
             
             sentencia.execute("CREATE TABLE IF NOT EXISTS PRODUCTO ("
                     + "idProducto INT(5) AUTO_INCREMENT NOT NULL"
-                    + "precio FLOAT NOT NULL, stock INT NOT NULL,"
+                    + "precio FLOAT NOT NULL, "
                     + "stock INT(5) NOT NULL, "
                     + "nombre VARCHAR(30) NOT NULL,"
                     + "descripcion VARCHAR(100) NOT NULL," 
@@ -52,7 +51,8 @@ public class CreacionTablas {
             
             sentencia.execute("CREATE TABLE IF NOT EXIST CUENTA ("
                     + "contraseña VARCHAR(15) NOT NULL, "
-                    + "correo_electronico VARCHAR(40) NOT NULL;");
+                    + "correo_electronico VARCHAR(40) NOT NULL, "
+                    + "PRIMARY KEY (correo_electronico);");
             
             sentencia.execute("CREATE TABLE IF NOT EXISTS PROVEEDOR ("
                     + "nombre VARCHAR(20) NOT NULL,"
@@ -76,6 +76,12 @@ public class CreacionTablas {
                     + "ON UPDATE CASCADE"
                     + "ON DELETE CASCADE)");
         
+            sentencia.execute("CREATE TABLE IF NOT EXISTS FACTURA ("
+                    + "idFactura INT(5) AUTO_INCREMENT NOT NULL,"
+                    + "fechaCompra DATE NOT NULL,"
+                    + "precio FLOAT NOT NULL, "
+                    + "PRIMARY KEY (idFactura);"
+                    + "");
         
         System.out.println("\n - BASE DE DATOS LISTA - \n");
         }

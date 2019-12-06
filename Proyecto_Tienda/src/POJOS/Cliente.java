@@ -33,8 +33,8 @@ public class Cliente implements Serializable{
     @Column (name = "correo_electronico", length = 50)
     private String correo_electronico;
     
-    @Column (name = "direccion")
-    private Direccion direccion;
+    @ManyToMany ()
+    private List<Direccion> direccion;
     
     @Column (name = "fecha_nacimiento")
     private Date fecha_nacimiento;
@@ -100,11 +100,11 @@ public class Cliente implements Serializable{
         this.correo_electronico = correo_electronico;
     }
 
-    public Direccion getDireccion() {
+    public List<Direccion> getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(Direccion direccion) {
+    public void setDireccion(List<Direccion> direccion) {
         this.direccion = direccion;
     }
 
