@@ -150,7 +150,7 @@ public class Menu {
         } while(op!=3);
     }    
     
-    public static void menuUsuario() throws IOException{
+    public static void menuUsuario(BufferedReader lee) throws IOException{
         
         byte op;
         
