@@ -172,31 +172,31 @@ public class Menu {
             try{
                 switch(op){
                     case 1:
-//                        Modificar.modificarNombre();
+                        Modificar.nombre(cliente);
                         break;
                     case 2:
-//                        Modificar.modificarApellidos();
+                        Modificar.apellidos(cliente);
                         break;
                     case 3:
-//                        Modificar.modificarCorreo();
+                        Modificar.correo(cliente);
                         break;
                     case 4:
-//                        Modificar.modificarDNI();
+                        Modificar.dni(cliente);
                         break;
                     case 5:
-//                        Modificar.modificarFechaNacimiento();
+                        Modificar.fecha_nacimiento(cliente);
                         break;
                     case 6:
-//                        Modificar.modificarDireccion();
+                        Modificar.dirección(cliente);
                         break;
                     case 7:
-//                        Modificar.modificarUsuario();
+                        Modificar.usuario(cliente);
                         break;
                     case 8:
-//                        Modificar.modificarTelefono();
+                        Modificar.telefono(cliente);
                         break;
                     case 9:
-//                        Modificar.modificarTarjeta();
+                        Modificar.tarjeta(cliente);
                         break;
                     case 10:
                           Menu.menuPrincipal();

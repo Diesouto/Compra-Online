@@ -1,5 +1,6 @@
 package metodos;
 
+import POJOS.Cliente;
 import POJOS.Producto;
 import hibernate.HibernateUtil;
 import java.io.BufferedReader;
@@ -47,7 +48,38 @@ public class Bajas {
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
-        sesion.close();
+        sesion.close();  
+    }
+     
+     public static void bajaCliente (BufferedReader lee) throws IOException {
         
+        Cliente cliente;
+        Session sesion;
+        String correo;
+        
+        
+        sesion = HibernateUtil.getSession();
+        
+        try{
+            System.out.println("Introduzca correo del cliente a eliminar");
+            correo = lee.readLine();
+            
+            cliente = (Cliente)sesion.get(Cliente.class, correo);
+            
+            if(cliente!=null){
+
+                if(Menu.menuConfirmar(lee)==1)
+                {
+                    sesion.beginTransaction();
+                    sesion.delete(cliente);
+                    sesion.getTransaction().commit();
+                    System.out.println("\n Cliente eliminado \n");
+                }
+            }else
+                System.out.println("\n Cliente no encontrado \n");
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }  
+        sesion.close();
     }
 }
