@@ -65,7 +65,7 @@ public class Menu {
             try{
                 switch(op){
                     case 1:
-//                        Consultas.verProducto(lee);
+                        Visualizar.productos();
                         break;
                     case 2:
 //                        Consultas.verCesta(lee);
@@ -250,5 +250,17 @@ public class Menu {
                 System.out.println(e.getMessage());
             }        
         } while(op!=10);
-    } 
+    }
+    
+    public static byte menuConfirmar (BufferedReader lee) throws IOException {
+        
+        byte op;
+        System.out.println("¿Seguro que desea eliminar este producto?"
+                + "\n1.SI"
+                + "\n2.NO");
+        
+        op = Byte.parseByte(lee.readLine());
+        
+        return op;
+    }
 }

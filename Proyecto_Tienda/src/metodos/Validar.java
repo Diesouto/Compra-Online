@@ -104,6 +104,7 @@ public class Validar {
         try {
             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
             fechaVencimiento = formatoFecha.parse(lee.readLine());
+            //setLenient false se usa para evitar que se puedan poner fechas incorrectas
             formatoFecha.setLenient(false);
         } catch (ParseException e) {
           System.out.println(e);
