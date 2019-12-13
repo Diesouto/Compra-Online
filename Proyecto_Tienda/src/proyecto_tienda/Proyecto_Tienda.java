@@ -5,8 +5,7 @@
  */
 package proyecto_tienda;
 
-import POJOS.Cliente;
-import POJOS.Producto;
+import POJOS.*;
 import java.io.IOException;
 import hibernate.HibernateUtil;
 import java.io.BufferedReader;
@@ -14,6 +13,7 @@ import java.io.InputStreamReader;
 import java.util.List;
 import metodos.AccionesUsuario;
 import metodos.Altas;
+import metodos.Menu;
 import metodos.Modificar;
 import metodos.Visualizar;
 import org.hibernate.Query;
@@ -33,10 +33,10 @@ public class Proyecto_Tienda {
         Session sesion =  HibernateUtil.getSession();
         String eleccion = "";
         
-        /*Prueba modificar*/
-        
-        Altas.crearCuenta();
-        AccionesUsuario.pruebaSesion(lee, sesion);
+        Cuenta prueba = AccionesUsuario.iniciarSesion(lee);
+        String buscaCliente = prueba.getCorreo_electronico();
+        Cliente cliente = AccionesUsuario.getCliente(buscaCliente, sesion);
+        Modificar.apellidos(cliente);
         
         /*
         Query query = HibernateUtil.getSession().createQuery("SELECT p FROM Producto p");

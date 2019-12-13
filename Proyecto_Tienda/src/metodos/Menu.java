@@ -33,7 +33,7 @@ public class Menu {
                         Altas.crearCuenta();
                         break;
                     case 2:
-//                        Bajas.bajas(lee);
+                        AccionesUsuario.iniciarSesion(lee);
                         break;
                     case 3:
                         System.out.println("\n - FIN DEL PROGRAMA - \n");
@@ -71,7 +71,7 @@ public class Menu {
 //                        Consultas.verCesta(lee);
                         break;
                     case 3:
-//                        Modificar.modificarUsuario();
+                        Menu.menuModificar(lee);
                         break;
                     case 4:
                         Menu.menuPrincipal();
@@ -150,11 +150,11 @@ public class Menu {
         } while(op!=3);
     }    
     
-    public static void menuUsuario(BufferedReader lee) throws IOException{
+    public static void menuModificar(BufferedReader lee) throws IOException{
         
         byte op;
         
-        System.out.println("----MENÚ USUARIO--- \n"
+        System.out.println("----MENÚ MODIFICAR--- \n"
                 + "1. Modificar nombre \n"
                 + "2. Modificar apellidos \n"
                 + "3. Modificar correo \n"
