@@ -33,10 +33,7 @@ public class Proyecto_Tienda {
         Session sesion =  HibernateUtil.getSession();
         String eleccion = "";
         
-        Cuenta prueba = AccionesUsuario.iniciarSesion(lee);
-        String buscaCliente = prueba.getCorreo_electronico();
-        Cliente cliente = AccionesUsuario.getCliente(buscaCliente, sesion);
-        Modificar.apellidos(cliente);
+        Altas.crearCuenta();
         
         /*
         Query query = HibernateUtil.getSession().createQuery("SELECT p FROM Producto p");

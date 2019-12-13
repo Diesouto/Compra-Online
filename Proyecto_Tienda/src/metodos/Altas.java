@@ -7,7 +7,6 @@ package metodos;
 
 import JavaBeans.Proveedor;
 import POJOS.*;
-import hibernate.Guardar;
 import java.io.*;
 import java.util.Date;
 

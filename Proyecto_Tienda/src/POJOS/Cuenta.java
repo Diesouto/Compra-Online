@@ -21,6 +21,9 @@ public class Cuenta implements Serializable {
     @OneToOne(cascade=CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Cliente cliente;
+    
+    @OneToOne()
+    private Cesta cesta;
 
     public Cuenta() {
     }

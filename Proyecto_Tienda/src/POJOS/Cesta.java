@@ -85,4 +85,13 @@ public class Cesta implements Serializable{
         System.out.print("Precio de la cesta es: " +precioTotal);
     }
     
+    public void añadirProducto(Producto producto){
+        contadorProductos += 1;
+        productos.add(producto);
+    }
+    
+    public void quitarProducto(int posicion){
+        contadorProductos -= 1;
+        productos.remove(posicion);
+    }
 }
