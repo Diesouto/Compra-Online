@@ -25,9 +25,9 @@ public class Cuenta implements Serializable {
     public Cuenta() {
     }
 
-    public Cuenta(String contraseña, String correo_electronico, Cliente cliente) {
-        this.contraseña = contraseña;
+    public Cuenta(String correo_electronico, String contraseña, Cliente cliente) {
         this.correo_electronico = correo_electronico;
+        this.contraseña = contraseña;
         this.cliente= cliente;
     }
 

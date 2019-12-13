@@ -30,7 +30,7 @@ public class Menu {
             try{
                 switch(op){
                     case 1:
-                        Altas.crearUsuario();
+                        Altas.crearCuenta();
                         break;
                     case 2:
 //                        Bajas.bajas(lee);

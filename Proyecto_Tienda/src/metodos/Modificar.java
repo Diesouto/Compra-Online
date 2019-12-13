@@ -16,6 +16,63 @@ public class Modificar {
  
     public static BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
     
+    
+    public static void nombre(Cliente cliente) throws IOException{
+        System.out.print("Introducir nuevo nombre: ");
+        String nombre = lee.readLine();
+        cliente.setNombre(nombre);
+        Modificar.guardar();
+    }
+    
+    public static void apellidos(Cliente cliente) throws IOException{
+        System.out.print("Introducir nuevos apellidos: ");
+        String apellidos = lee.readLine();
+        cliente.setApellidos(apellidos);
+    }
+    
+    public static void correo(Cliente cliente) throws IOException{
+        System.out.print("Introducir nuevo correo: ");
+        String correo_nuevo = lee.readLine();
+        cliente.setCorreo_electronico(correo_nuevo);
+    }
+    
+    public static void dni(Cliente cliente) throws IOException{
+        System.out.print("Introduce nuevo dni: ");
+        String dni = Validar.dni();
+        cliente.setDni(dni);
+    }
+    
+    public static void fecha_nacimiento(Cliente cliente) throws IOException{
+        System.out.print("Introduce nueva fecha de nacimiento: ");
+        Date fecha_nacimiento = Validar.validarFecha();
+        cliente.setFecha_nacimiento(fecha_nacimiento);
+    }
+    
+    public static void dirección(Cliente cliente) throws IOException{
+        
+    }
+    
+    public static void usuario(Cliente cliente) throws IOException{
+        
+    }
+    
+    public static void telefono(Cliente cliente) throws IOException{
+        System.out.println("Introduce nuevo telefono");
+        String telefono = Validar.telefono();
+        cliente.setTelefono(telefono);
+    }
+    
+    public static void tarjeta(Cliente cliente) throws IOException{
+        
+    }
+    
+    public static void guardar() {
+        Session sesion = HibernateUtil.getSession();
+        sesion.getTransaction().commit();
+        System.out.println("Cliente actualizado");
+    }
+    
+    /*
     public static void modificar () throws IOException {
         
         String correo, nombre, apellidos, correo_nuevo, dni, telefono;
@@ -91,5 +148,5 @@ public class Modificar {
             System.out.println(e.getMessage());
         }
         sesion.close();
-    }
+    }*/
 }

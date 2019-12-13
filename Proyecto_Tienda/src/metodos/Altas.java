@@ -21,22 +21,23 @@ public class Altas {
     
     public static void crearCuenta() throws IOException{
         
+        /*Obliga a crear un cliente*/
+        Cliente cliente = Altas.crearCliente();
+        
         System.out.println("CREAR CUENTA");
-        System.out.print("Nombre de usuario: ");
-        String username = lee.readLine();
+        System.out.print("Usuario: ");
+        String usuario = cliente.getCorreo_electronico();
+        System.out.print(usuario +"\n");
         System.out.print("Contraseña: ");
         String password = lee.readLine();
         
-        /*Obliga a crear un cliente*/
-        Cliente cliente = Altas.crearUsuario();
-        
         /*Falta comprobar que el nombre de usuario no está cogido*/
-        Cuenta cuenta = new Cuenta (username, password, cliente);
+        Cuenta cuenta = new Cuenta (usuario, password, cliente);
         
         Guardar.guardarObjeto(cuenta);
     }
     
-    public static Cliente crearUsuario() throws IOException{
+    protected static Cliente crearCliente() throws IOException{
         
         System.out.println("CREAR CLIENTE");
         System.out.print("Nombre: ");
