@@ -167,47 +167,47 @@ public class Menu {
                 + "10. Volver al menú \n");
         
         op = Byte.parseByte(lee.readLine());
-        
-        do{
-            try{
-                switch(op){
-                    case 1:
-                        Modificar.nombre(cliente);
-                        break;
-                    case 2:
-                        Modificar.apellidos(cliente);
-                        break;
-                    case 3:
-                        Modificar.correo(cliente);
-                        break;
-                    case 4:
-                        Modificar.dni(cliente);
-                        break;
-                    case 5:
-                        Modificar.fecha_nacimiento(cliente);
-                        break;
-                    case 6:
-                        Modificar.dirección(cliente);
-                        break;
-                    case 7:
-                        Modificar.usuario(cliente);
-                        break;
-                    case 8:
-                        Modificar.telefono(cliente);
-                        break;
-                    case 9:
-                        Modificar.tarjeta(cliente);
-                        break;
-                    case 10:
-                          Menu.menuPrincipal();
-                }
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-            }        
-        } while(op!=10);
+//        
+//        do{
+//            try{
+//                switch(op){
+//                    case 1:
+//                        Modificar.nombre(cliente);
+//                        break;
+//                    case 2:
+//                        Modificar.apellidos(cliente);
+//                        break;
+//                    case 3:
+//                        Modificar.correo(cliente);
+//                        break;
+//                    case 4:
+//                        Modificar.dni(cliente);
+//                        break;
+//                    case 5:
+//                        Modificar.fecha_nacimiento(cliente);
+//                        break;
+//                    case 6:
+//                        Modificar.dirección(cliente);
+//                        break;
+//                    case 7:
+//                        Modificar.usuario(cliente);
+//                        break;
+//                    case 8:
+//                        Modificar.telefono(cliente);
+//                        break;
+//                    case 9:
+//                        Modificar.tarjeta(cliente);
+//                        break;
+//                    case 10:
+//                          Menu.menuPrincipal();
+//                }
+//            }catch(Exception e){
+//                System.out.println(e.getMessage());
+//            }        
+//        } while(op!=10);
     }
     
-    public static void menuAdministrador() throws IOException{
+public static void menuAdministrador() throws IOException{
         
         byte op;
         

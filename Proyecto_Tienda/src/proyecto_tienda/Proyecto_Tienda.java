@@ -29,12 +29,9 @@ public class Proyecto_Tienda {
      */
     public static void main(String[] args) throws IOException {
         
-        BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
-        Session sesion =  HibernateUtil.getSession();
-        String eleccion = "";
-        
+                
         Altas.crearCuenta();
-        
+        HibernateUtil.cerrarSession();
         /*
         Query query = HibernateUtil.getSession().createQuery("SELECT p FROM Producto p");
         List<Producto> productos = query.list();

@@ -7,8 +7,10 @@ package metodos;
 
 import JavaBeans.Proveedor;
 import POJOS.*;
+import hibernate.HibernateUtil;
 import java.io.*;
 import java.util.Date;
+import org.hibernate.Session;
 
 /**
  *
@@ -18,11 +20,11 @@ public class Altas {
     
     public static BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
     
-    public static void crearCuenta() throws IOException{
+        public static void crearCuenta() throws IOException{
         
         /*Obliga a crear un cliente*/
         Cliente cliente = Altas.crearCliente();
-        
+        if(cliente != null){
         System.out.println("CREAR CUENTA");
         System.out.print("Usuario: ");
         String usuario = cliente.getCorreo_electronico();
@@ -33,10 +35,24 @@ public class Altas {
         /*Falta comprobar que el nombre de usuario no está cogido*/
         Cuenta cuenta = new Cuenta (usuario, password, cliente);
         
-        Guardar.guardarObjeto(cuenta);
+        Guardar.guardarObjeto(cuenta);}{
+        System.out.println("\nEste correo ya existe! Pruebe iniciar sesion...");
+    }
+        
     }
     
     protected static Cliente crearCliente() throws IOException{
+                
+        Cliente cliente = null;
+        
+        System.out.print("Correo electrónico: ");
+        String correo = lee.readLine();
+        correo = correo.replace(" ","");
+        
+        Session sesion = HibernateUtil.getSession();
+        Cliente aux = AccionesUsuario.getCliente(correo, sesion);
+        if(aux==null){
+        
         
         System.out.println("CREAR CLIENTE");
         System.out.print("Nombre: ");
@@ -44,14 +60,13 @@ public class Altas {
         System.out.print("Apellidos: ");
         String apellidos = lee.readLine();
         String dni = Validar.dni();
-        System.out.print("Correo electrónico: ");
-        String correo = lee.readLine();
         System.out.print("Fecha de nacimiento (xx/xx/xxxx): \n");
         Date fecha_nacimiento = Validar.validarFecha();
         String telefono = Validar.telefono();
         
-        Cliente cliente = new Cliente(nombre, apellidos, dni, correo, fecha_nacimiento);
-        
+        cliente = new Cliente(nombre, apellidos, dni, correo, fecha_nacimiento);
+        }
+        sesion.close();
         return cliente;
     }
     
@@ -71,6 +86,7 @@ public class Altas {
         
         cliente.getTarjetas().add(tarjeta);
     }
+    
     
     public static Direccion insertDireccion() throws IOException{
         
