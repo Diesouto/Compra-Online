@@ -9,6 +9,7 @@ import POJOS.*;
 import hibernate.HibernateUtil;
 import java.util.List;
 import org.hibernate.Query;
+import org.hibernate.Session;
 
 /**
  *
@@ -17,12 +18,14 @@ import org.hibernate.Query;
 public class Visualizar {
     
     public static void productos(){
-        Query query = HibernateUtil.getSession().createQuery("SELECT p FROM Producto p");
+        Session sesion = HibernateUtil.getSession();
+        Query query = sesion.createQuery("SELECT p FROM Producto p");
         List<Producto> productos = query.list();
         for(Producto producto : productos){
             System.out.println(producto.toString());
         }
-        HibernateUtil.cerrarSession();
+        sesion.close();
+        //HibernateUtil.cerrarSession();
     }
     
     public static void clientes(){

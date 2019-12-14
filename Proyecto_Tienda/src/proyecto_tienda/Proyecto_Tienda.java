@@ -24,16 +24,16 @@ import org.hibernate.Session;
  */
 public class Proyecto_Tienda {
     public static Sesion sesion;
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) throws IOException {
         BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
+        sesion = new Sesion(); //Se crea una sesion vacia (no logeado)
         
         //Se muestra el menu principal
-        Menu.menuPrincipal();
+        Menu.menuPrincipal(sesion);
         
-        sesion = new Sesion(); //Se crea una sesion vacia (no logeado)
+        
+        
         Cuenta cuenta = AccionesUsuario.iniciarSesion(lee);
         if( cuenta != null){
             sesion = new Sesion(cuenta.getCorreo_electronico());

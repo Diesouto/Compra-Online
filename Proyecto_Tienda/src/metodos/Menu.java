@@ -51,7 +51,7 @@ public class Menu {
        
     
     
-    public static void menuPrincipal() throws IOException{
+    public static void menuPrincipal(Sesion s) throws IOException{
         
         byte op;
         
@@ -61,22 +61,31 @@ public class Menu {
                 + "3. Modificar datos usuario \n"
                 + "4. Cerrar sesión \n");
         
-        op = Byte.parseByte(lee.readLine());
-        
         do{
+            op = Byte.parseByte(lee.readLine());
             try{
                 switch(op){
                     case 1:
                         Visualizar.productos();
                         break;
                     case 2:
-//                        Consultas.verCesta(lee);
+                        if(s.isLogeado() == true){
+                            //Consultas.verCesta(lee);
+                            //TODO: visualizar cesta
+                        } else {
+                            System.out.println("Esta funcion esta reservada para usuarios registrados.");
+                        }
                         break;
                     case 3:
-                        Menu.menuModificar(lee);
+                        if(s.isLogeado() == true){
+                            Menu.menuModificar(lee, s);
+                        } else {
+                            System.out.println("Esta funcion esta reservada para usuarios registrados.");
+                        }
                         break;
                     case 4:
-                        Menu.menuPrincipal();
+                        Menu.menuPrincipal(s);
+                        //TODO: cerrar sesion
                         break;  
                 }
                 
@@ -86,8 +95,8 @@ public class Menu {
         } while(op!=4);
     } 
   
-    
-    public static void menuProducto() throws IOException{
+    //TODO: arreglar
+    public static void menuProducto(Sesion s) throws IOException{
         
         byte op;
         
@@ -111,7 +120,7 @@ public class Menu {
 //                        Consultas.buscarProducto();
                         break;
                     case 4:
-                        Menu.menuPrincipal();
+                        Menu.menuPrincipal(s);
                         break;
                 }
                 
@@ -121,7 +130,7 @@ public class Menu {
         } while(op!=4);
     }
     
-    public static void menuCesta() throws IOException{
+    public static void menuCesta(Sesion s) throws IOException{
         
         byte op;
         
@@ -142,7 +151,7 @@ public class Menu {
 //                        Bajas.borrarArticulo();
                         break;
                     case 3:
-                          Menu.menuPrincipal();
+                          Menu.menuPrincipal(s);
                           break;
                 }
                 
@@ -152,7 +161,7 @@ public class Menu {
         } while(op!=3);
     }    
     
-    public static void menuModificar(BufferedReader lee) throws IOException{
+    public static void menuModificar(BufferedReader lee, Sesion s) throws IOException{
         
         byte op;
         
@@ -168,9 +177,8 @@ public class Menu {
                 + "9. Modificar tarjeta \n"
                 + "10. Volver al menú \n");
         
-        op = Byte.parseByte(lee.readLine());
-//        
 //        do{
+//            op = Byte.parseByte(lee.readLine());
 //            try{
 //                switch(op){
 //                    case 1:
@@ -209,7 +217,7 @@ public class Menu {
 //        } while(op!=10);
     }
     
-public static void menuAdministrador() throws IOException{
+public static void menuAdministrador(Sesion s) throws IOException{
         
         byte op;
         
@@ -246,7 +254,7 @@ public static void menuAdministrador() throws IOException{
 //                        Modificar.modificarDireccion();
                         break;
                     case 7:
-                          Menu.menuPrincipal();
+                          Menu.menuPrincipal(s);
                 }
             }catch(Exception e){
                 System.out.println(e.getMessage());
