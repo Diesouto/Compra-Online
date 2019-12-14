@@ -54,21 +54,25 @@ public class Menu {
     public static void menuPrincipal(Sesion s) throws IOException{
         
         byte op;
-        
-        System.out.println("----MENÚ PRINCIPAL--- \n"
-                + "1. Ver productos \n"
-                + "2. Ver cesta y realizar compra \n"
-                + "3. Modificar datos usuario \n"
-                + "4. Cerrar sesión \n");
-        
         do{
+            System.out.println("----MENÚ PRINCIPAL--- \n"
+                + "1. Ver productos \n"
+                + "2. Seleccionar producto"
+                + "3. Ver cesta y realizar compra \n"
+                + "4. Modificar datos usuario \n"
+                + "5. Cerrar sesión \n");
+            
             op = Byte.parseByte(lee.readLine());
             try{
                 switch(op){
                     case 1:
                         Visualizar.productos();
                         break;
+                        
                     case 2:
+                        //TODO: preguntar por un ID de un producto. Mostrar ese producto en detalle y
+                        // mostrar opciones: meter en cesta, o salir.
+                    case 3:
                         if(s.isLogeado() == true){
                             //Consultas.verCesta(lee);
                             //TODO: visualizar cesta
@@ -76,14 +80,14 @@ public class Menu {
                             System.out.println("Esta funcion esta reservada para usuarios registrados.");
                         }
                         break;
-                    case 3:
+                    case 4:
                         if(s.isLogeado() == true){
                             Menu.menuModificar(lee, s);
                         } else {
                             System.out.println("Esta funcion esta reservada para usuarios registrados.");
                         }
                         break;
-                    case 4:
+                    case 5:
                         Menu.menuPrincipal(s);
                         //TODO: cerrar sesion
                         break;  
