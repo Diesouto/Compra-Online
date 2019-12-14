@@ -23,14 +23,23 @@ import org.hibernate.Session;
  * @author a18oscarbg
  */
 public class Proyecto_Tienda {
-
+    public static Sesion sesion;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
+        BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
         
-                
-        Altas.crearCuenta();
+        //Se muestra el menu principal
+        Menu.menuPrincipal();
+        
+        sesion = new Sesion(); //Se crea una sesion vacia (no logeado)
+        Cuenta cuenta = AccionesUsuario.iniciarSesion(lee);
+        if( cuenta != null){
+            sesion = new Sesion(cuenta.getCorreo_electronico());
+        }
+        
+        //Altas.crearCuenta();
         HibernateUtil.cerrarSession();
         /*
         Query query = HibernateUtil.getSession().createQuery("SELECT p FROM Producto p");

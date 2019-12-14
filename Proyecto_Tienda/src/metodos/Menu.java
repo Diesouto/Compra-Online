@@ -5,6 +5,7 @@
  */
 package metodos;
 
+import POJOS.Sesion;
 import java.io.*;
 
 /**
@@ -15,8 +16,8 @@ public class Menu {
     
     public static BufferedReader lee = new BufferedReader(new InputStreamReader(System.in)); 
     
-    public static void menuInicial() throws IOException{
-        
+    public static Sesion menuLogin() throws IOException{
+        Sesion s = new Sesion();
         byte op;
         
         System.out.println("----JAVIEXPRESS SHOP--- \n"
@@ -44,6 +45,7 @@ public class Menu {
                 System.out.println(e.getMessage());
             }   
         } while(op!=3);
+        return s;
     }
         
        
