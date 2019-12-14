@@ -7,11 +7,11 @@ package metodos;
 
 import POJOS.Cliente;
 import POJOS.Cuenta;
+import POJOS.Producto;
 import hibernate.HibernateUtil;
 import java.io.*;
-import java.util.List;
+import java.util.Scanner;
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
@@ -50,6 +50,32 @@ public class AccionesUsuario {
         return cuentaIniciada;
     }
     
+    public static void concretarPedido(){
+        System.out.println("Introduce el id del producto deseado");
+        Scanner teclado = new Scanner(System.in);
+        String  pedido = teclado.nextLine();
+        Session sesion = HibernateUtil.getSession();
+        Producto producto = getProducto(pedido, sesion);
+        sesion.close();
+        if(producto!=null){
+            System.out.println(producto.toString());
+            System.out.println("Meter en cesta?");
+            String eleccion = "";
+            do{
+                eleccion = teclado.nextLine();
+                if(eleccion.equalsIgnoreCase("si")){
+                    //Sin finalizar
+
+                }
+            }while(eleccion.equalsIgnoreCase("No"));
+            
+            
+        }else{
+            System.out.println("No existe tal producto, intentelo de nuevo...");
+        }
+    }
+    
+    
     public static Cuenta getCuenta(String correo, Session sesion) {
 
         Criteria c = sesion.createCriteria(Cuenta.class);
@@ -66,6 +92,16 @@ public class AccionesUsuario {
         c.add(Restrictions.eq("correo_electronico", correo));
 
         Cliente cls = (Cliente) c.uniqueResult();
+
+        return cls;
+    }
+    
+    public static Producto getProducto(String searchProducto, Session sesion){
+        
+        Criteria c = sesion.createCriteria(Producto.class);
+        c.add(Restrictions.eq("idProducto", searchProducto));
+
+        Producto cls = (Producto) c.uniqueResult();
 
         return cls;
     }

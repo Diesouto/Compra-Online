@@ -41,6 +41,7 @@ public class Producto implements Serializable{
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.proveedor = proveedor;
+        
     }
 
     
@@ -100,6 +101,10 @@ public class Producto implements Serializable{
 
     public void setProveedor(Proveedor proveedor) {
         this.proveedor = proveedor;
+    }
+    public String toStringLite() {
+        return "Producto de Id: " + idProducto 
+                + "\n\tNombre: " + nombre + '\n';
     }
 
     @Override

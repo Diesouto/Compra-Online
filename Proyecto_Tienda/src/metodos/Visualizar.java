@@ -27,6 +27,7 @@ public class Visualizar {
         sesion.close();
         //HibernateUtil.cerrarSession();
     }
+   
     
     public static void clientes(){
         Query query = HibernateUtil.getSession().createQuery("SELECT p FROM Cliente p");

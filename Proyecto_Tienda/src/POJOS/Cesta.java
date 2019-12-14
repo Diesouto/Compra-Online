@@ -28,17 +28,18 @@ public class Cesta implements Serializable{
     @Column (name = "fechaAñadido")
     private Date fechaAñadido;
     
-    @Column (name = "contadorProductos")
-    private int contadorProductos;
-    
     /*No se pueden usar ArrayList en los mapeos*/
     @OneToMany()
     private List<Producto> productos;
 
-    public Cesta(int id_cesta, Date fechaAñadido, int contadorProductos, List<Producto> productos) {
+    public Cesta(int id_cesta, Date fechaAñadido, List<Producto> productos) {
         this.id_cesta = id_cesta;
         this.fechaAñadido = fechaAñadido;
-        this.contadorProductos = contadorProductos;
+        this.productos = new ArrayList <>();
+    }
+    
+        public Cesta( Date fechaAñadido, List<Producto> productos) {
+        this.fechaAñadido = fechaAñadido;
         this.productos = new ArrayList <>();
     }
 
@@ -56,14 +57,6 @@ public class Cesta implements Serializable{
 
     public void setFechaAñadido(Date fechaAñadido) {
         this.fechaAñadido = fechaAñadido;
-    }
-
-    public int getContadorProductos() {
-        return contadorProductos;
-    }
-
-    public void setContadorProductos(int contadorProductos) {
-        this.contadorProductos = contadorProductos;
     }
 
     public List<Producto> getProductos() {
@@ -84,14 +77,5 @@ public class Cesta implements Serializable{
         
         System.out.print("Precio de la cesta es: " +precioTotal);
     }
-    
-    public void añadirProducto(Producto producto){
-        contadorProductos += 1;
-        productos.add(producto);
-    }
-    
-    public void quitarProducto(int posicion){
-        contadorProductos -= 1;
-        productos.remove(posicion);
-    }
+
 }

@@ -9,6 +9,7 @@ import JavaBeans.Proveedor;
 import POJOS.*;
 import hibernate.HibernateUtil;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Date;
 import org.hibernate.Session;
 
@@ -19,7 +20,7 @@ import org.hibernate.Session;
 public class Altas {
     
     public static BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
-    
+     
         public static void crearCuenta() throws IOException{
         
         /*Obliga a crear un cliente*/
@@ -31,9 +32,12 @@ public class Altas {
         System.out.print(usuario +"\n");
         System.out.print("Contraseña: ");
         String password = lee.readLine();
+        Date date = new Date();
+        ArrayList<Producto> aux = new ArrayList<>();
+        Cesta cesta = new Cesta(date,aux);
         
         /*Falta comprobar que el nombre de usuario no está cogido*/
-        Cuenta cuenta = new Cuenta (usuario, password, cliente);
+        Cuenta cuenta = new Cuenta (usuario, password, cliente, cesta);
         
         Guardar.guardarObjeto(cuenta);}{
         System.out.println("\nEste correo ya existe! Pruebe iniciar sesion...");
