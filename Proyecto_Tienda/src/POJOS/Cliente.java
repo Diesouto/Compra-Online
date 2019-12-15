@@ -127,13 +127,18 @@ public class Cliente implements Serializable{
         this.saldo = saldo;
     }
     
-    public void gastarDinero(float gasto){
+    public boolean gastarDinero(float gasto){
+        
+        boolean comprarlo = false;
+        
         if((this.saldo-gasto)<0){
             System.out.println("No puedes permitirtelo.");
         }else{
             this.saldo = this.saldo-gasto;
-                System.out.println("Comprado");
+                comprarlo = true;
         }
+        
+        return comprarlo;
     }
     
     public void añadirFondos(float fondos){
@@ -142,6 +147,14 @@ public class Cliente implements Serializable{
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public List<Factura> getFacturas() {
+        return facturas;
+    }
+
+    public void setFacturas(List<Factura> facturas) {
+        this.facturas = facturas;
     }
 
     @Override
