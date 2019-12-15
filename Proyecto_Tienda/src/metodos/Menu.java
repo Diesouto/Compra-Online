@@ -86,8 +86,7 @@ public class Menu {
                         break;
                     case 3:
                         if(s.isLogeado() == true){
-                            //Consultas.verCesta(lee);
-                            //TODO: visualizar cesta
+                            Visualizar.cesta(s);
                         } else {
                             System.out.println("Esta funcion esta reservada para usuarios registrados.");
                         }

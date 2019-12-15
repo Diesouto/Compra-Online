@@ -70,7 +70,7 @@ public class Cesta implements Serializable{
         this.productos = productos;
     }
     
-    public void calcularPrecio(List<Producto> productos){
+    public float calcularPrecio(){
         
         float precioTotal=0;
         
@@ -78,7 +78,13 @@ public class Cesta implements Serializable{
             precioTotal+=productos.get(i).getPrecio();
         }
         
-        System.out.print("Precio de la cesta es: " +precioTotal);
+        return precioTotal;
     }
-
+    
+    public void verProductos() {
+        System.out.println("--TU CESTA--");
+        for(int i=0; i< productos.size(); i++){
+            System.out.println(productos.get(i).toStringLite());
+        }
+    }
 }

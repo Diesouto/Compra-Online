@@ -8,8 +8,12 @@ package metodos;
 import POJOS.*;
 import hibernate.HibernateUtil;
 import java.util.List;
+import java.util.Scanner;
+import static metodos.AccionesUsuario.getCuenta;
+import static metodos.AccionesUsuario.getProducto;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -38,13 +42,11 @@ public class Visualizar {
         HibernateUtil.cerrarSession();
     }
     
-    public static void cesta(){
-        Session sesion = HibernateUtil.getSession();
-        //se deberia rediseñar lo de la cesta. aqui va la consulta para pillar la cesta.
-        Query query = sesion.createQuery("SELECT p FROM Cliente p");
-        
-        //metodo para visualizar cesta
-        
-        sesion.close();
+    public static void cesta(Sesion sesion){
+        Session session = HibernateUtil.getSession();
+        Cuenta cuenta = getCuenta(sesion.getToken(),session);
+        cuenta.getCesta().verProductos();
+        System.out.println("Precio final: " +cuenta.getCesta().calcularPrecio() +"€ \n");
+        session.close();
     }
 }
