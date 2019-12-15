@@ -198,17 +198,18 @@ public class AccionesUsuario {
         Session session = HibernateUtil.getSession();
         Cuenta cuenta = getCuenta(sesion.getToken(),session);
         Date fecha = new Date();
-        List <Producto> productosComprados = cuenta.getCesta().getProductos();
+        List <Producto> productosComprados = new ArrayList(cuenta.getCesta().getProductos());
         float precioTotal = cuenta.getCesta().calcularPrecio();
         
         if(cuenta.getCliente().gastarDinero(precioTotal)==true){
             Factura factura = new Factura(fecha, precioTotal, productosComprados);
             System.out.println("Comprado");
             cuenta.getCliente().getFacturas().add(factura);
-            reducirStockCesta(sesion);
+            //reducirStockCesta(sesion);
             vaciarCesta(sesion);
             Transaction tx = session.beginTransaction();
-            session.update(cuenta);
+            session.save(factura);
+            //session.update(cuenta);
             session.flush();
             tx.commit();
         }
