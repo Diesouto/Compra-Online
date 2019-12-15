@@ -27,6 +27,9 @@ public class Factura implements Serializable{
     @OneToMany ()
     private List<Producto> productos;
 
+    public Factura() {
+    }
+    
     public Factura(Date fechaCompra, float precio, List<Producto> productos) {
         this.fechaCompra = fechaCompra;
         this.precio = precio;
