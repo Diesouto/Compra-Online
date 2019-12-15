@@ -106,7 +106,7 @@ public class Producto implements Serializable{
                 + "\n\tPrecio: " + precio 
                 + "\n\tStock: " + stock 
                 + "\n\tNombre: " + nombre 
-                + "\n\tDescripcion: " + descripcion;
+                + "\n\tDescripcion: " + descripcion+"\n";
     }
     
     

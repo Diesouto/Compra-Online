@@ -2,6 +2,7 @@ package metodos;
 
 import POJOS.Cliente;
 import POJOS.Cuenta;
+import POJOS.Producto;
 import POJOS.Sesion;
 import hibernate.HibernateUtil;
 import java.io.BufferedReader;
@@ -74,14 +75,49 @@ public class Modificar {
         updateCuenta(cuenta);
     }
     
-    public static void tarjeta(Cliente cliente) throws IOException{
-        
+    public static void precio(Producto producto) throws IOException{
+        System.out.println("Introduce nuevo precio");
+        float precio = Float.parseFloat(lee.readLine());
+        producto.setPrecio(precio);
+        updateProducto(producto);
     }
+    
+    public static void stock(Producto producto) throws IOException{
+        System.out.println("Introduce nuevo stock");
+        int stock = Integer.parseInt(lee.readLine());
+        producto.setStock(stock);
+        updateProducto(producto);
+    }
+    
+    public static void nombre(Producto producto) throws IOException{
+        System.out.println("Introduce nuevo nombre");
+        String nombre = lee.readLine();
+        producto.setNombre(nombre);
+        updateProducto(producto);
+    }
+    
+    public static void descripcion(Producto producto) throws IOException{
+        System.out.println("Introduce nuevo descripcion");
+        String descripcion = lee.readLine();
+        producto.setDescripcion(descripcion);
+        updateProducto(producto);
+    }
+    
+    
     
     public static void updateCuenta(Cuenta cuenta) {
         Session session = HibernateUtil.getSession(); 
         Transaction tx = session.beginTransaction();
         session.update(cuenta);
+        session.flush();
+        tx.commit();
+        session.close();
+    }
+    
+    public static void updateProducto(Producto producto) {
+        Session session = HibernateUtil.getSession(); 
+        Transaction tx = session.beginTransaction();
+        session.update(producto);
         session.flush();
         tx.commit();
         session.close();

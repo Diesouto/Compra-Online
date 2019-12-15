@@ -51,12 +51,9 @@ Contributor(s):
     
     <mapping class="POJOS.Cliente"/>
     <mapping class="POJOS.Cuenta"/>
-    <mapping class="POJOS.Direccion"/>
     <mapping class="POJOS.Producto"/>
     <mapping class="POJOS.Factura"/>
-    <mapping class="POJOS.Tarjeta"/>
     <mapping class="POJOS.Cesta"/>
-    <mapping class="JavaBeans.Proveedor"/>
 
   </session-factory>
 </hibernate-configuration>

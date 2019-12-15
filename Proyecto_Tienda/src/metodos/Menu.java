@@ -9,8 +9,10 @@ import POJOS.Cliente;
 import POJOS.Sesion;
 import java.io.*;
 import POJOS.Cuenta;
+import POJOS.Producto;
 import hibernate.HibernateUtil;
 import org.hibernate.Session;
+import static proyecto_tienda.Proyecto_Tienda.sesion;
 
 /**
  *
@@ -38,7 +40,7 @@ public class Menu {
                         Altas.crearCuenta();
                         break;
                     case 2:
-                        AccionesUsuario.iniciarSesion(lee);
+                        AccionesUsuario.iniciarSesion(lee,s);
                         break;
                     case 3:
                         System.out.println("\n - FIN DEL PROGRAMA - \n");
@@ -60,14 +62,14 @@ public class Menu {
         byte op;
         do{
             if(s.isLogeado()){
-                System.out.println("----MENÚ PRINCIPAL--- \n"
+                System.out.println("\n\tMENÚ PRINCIPAL \n"
                     + "1. Ver productos \n"
                     + "2. Seleccionar producto\n"
                     + "3. Ver cesta y realizar compra \n"
                     + "4. Modificar datos usuario \n"
                     + "5. Cerrar sesión \n");
             }else if (!s.isLogeado()){
-                System.out.println("----MENÚ PRINCIPAL--- \n"
+                System.out.println("\n\tMENÚ PRINCIPAL \n"
                     + "1. Ver productos \n"
                     + "2. Seleccionar producto\n"
                     + "3. Ver cesta y realizar compra \n"
@@ -111,16 +113,25 @@ public class Menu {
                         break;
                     case 6:
                         if(!s.isLogeado()){
-                            Cuenta cuentaIniciar = AccionesUsuario.iniciarSesion(lee);
-                            s.logear(cuentaIniciar.getCorreo_electronico());                           
+                            Cuenta cuentaIniciar = AccionesUsuario.iniciarSesion(lee,s);
+                                if(cuentaIniciar==null){
+                                    System.out.println("No existe ese correo, quiere registrarse?");
+                                    String eleccion = lee.readLine();
+                                    if(eleccion.equalsIgnoreCase("si")){
+                                        cuentaIniciar = Altas.crearCuenta();
+                                        s.logear(cuentaIniciar.getCorreo_electronico());    
+                                    }}else{
+                                    s.logear(cuentaIniciar.getCorreo_electronico());                      
+                                }                    
                         }
                         break;
-                }
-                
+                    case 10:
+                        break;
+                }          
             }catch(Exception e){
                 System.out.println(e.getMessage());
             }        
-        } while(op!=7);
+        } while(op!=10);
     } 
   
     //TODO: arreglar
@@ -128,7 +139,7 @@ public class Menu {
         
         byte op;
         
-        System.out.println("----MENÚ PRODUCTO--- \n"
+        System.out.println("\n\tMENÚ PRODUCTO \n"
                 + "1. Añadir a la cesta \n"
                 + "2. Ver descripción \n"
                 + "3. Buscar producto \n"
@@ -162,7 +173,7 @@ public class Menu {
         
         byte op;
         
-        System.out.println("----MENÚ CESTA--- \n"
+        System.out.println("\n\tMENÚ CESTA \n"
                 + "1. Comprar \n"
                 + "2. Visualizar cesta \n"
                 + "3. Eliminar artículos \n"
@@ -207,7 +218,7 @@ public class Menu {
                             session.close();
 
         do{
-            System.out.println("----MENÚ MODIFICAR--- \n"
+            System.out.println("\n\tMENÚ MODIFICAR \n"
                     + "1. Modificar nombre \n"
                     + "2. Modificar apellidos \n"
                     + "3. Modificar correo \n"
@@ -255,46 +266,75 @@ public class Menu {
 public static void menuAdministrador(Sesion s) throws IOException{
         
         byte op;
-        
-        System.out.println("----MENÚ ADMINISTRADOR--- \n"
-                + "1. Añadir productos \n"
-                + "2. Añadir proveedores \n"
-                + "3. Modificar productos \n"
-                + "4. Modificar proveedores \n"
-                + "5. Ver productos \n"
-                + "6. Ver proveedores \n"
-                + "7. Volver al menú \n");
-        
-        op = Byte.parseByte(lee.readLine());
+           
         
         do{
+            System.out.println("\n\tMENÚ ADMINISTRADOR \n"
+                + "1. Añadir productos \n"
+                + "2. Modificar productos \n"
+                + "3. Ver productos \n"
+                + "4. Volver al menú \n");
+            op = Byte.parseByte(lee.readLine());
             try{
                 switch(op){
                     case 1:
-//                        Modificar.modificarNombre();
+                        Altas.insertProducto();
                         break;
                     case 2:
-//                        Modificar.modificarApellidos();
+                        System.out.println("Introduce el id del producto a modificar");
+                        String id = lee.readLine();
+                        Session session = HibernateUtil.getSession();
+                        Producto producto = AccionesUsuario.getProducto(id, session);
+                        Menu.modificarProductos(producto);
                         break;
                     case 3:
-//                        Modificar.modificarCorreo();
+                          Visualizar.productos();
                         break;
                     case 4:
-//                        Modificar.modificarDNI();
-                        break;
-                    case 5:
-//                        Modificar.modificarFechaNacimiento();
-                        break;
-                    case 6:
-//                        Modificar.modificarDireccion();
-                        break;
-                    case 7:
                           Menu.menuPrincipal(s);
+                        break;   
                 }
             }catch(Exception e){
                 System.out.println(e.getMessage());
             }        
-        } while(op!=10);
+        } while(op!=4);
+    }
+
+    public static void modificarProductos(Producto producto) throws IOException{
+        byte op;
+
+        do{
+            System.out.println(producto.toString());
+            
+             System.out.println("\n\tMENÚ ADMINISTRADOR \n"
+                + "1. Modificar precio \n"
+                + "2. Modificar stock \n"
+                + "3. Modificar nombre \n"
+                + "4. Modificar descripcion \n"
+                + "5. Volver al menú \n");
+        
+        op = Byte.parseByte(lee.readLine());
+            try{
+                switch(op){
+                    case 1:
+                        Modificar.precio(producto);
+                        break;
+                    case 2:
+                        Modificar.stock(producto);
+                        break;
+                    case 3:
+                        Modificar.nombre(producto);
+                        break;
+                    case 4:
+                        Modificar.descripcion(producto);
+                        break;
+                    case 5:
+                        break;
+                }
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }        
+        } while(op!=5);
     }
     
     public static byte menuConfirmar (BufferedReader lee) throws IOException {

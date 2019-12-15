@@ -23,7 +23,7 @@ import org.hibernate.criterion.Restrictions;
  */
 public class AccionesUsuario {
     
-    public static Cuenta iniciarSesion(BufferedReader lee) throws IOException{
+    public static Cuenta iniciarSesion(BufferedReader lee,Sesion s) throws IOException{
         
         Session sesion =  HibernateUtil.getSession();
         Cuenta cuentaIniciada = null;
@@ -33,6 +33,10 @@ public class AccionesUsuario {
         String correo = lee.readLine();
         System.out.print("Contraseña: ");
         String contraseña = lee.readLine();
+        
+        if(correo.equalsIgnoreCase("admin") && contraseña.equalsIgnoreCase(contraseña)){
+            Menu.menuAdministrador(s);
+        }
         
         Cuenta iniciarSesion = AccionesUsuario.getCuenta(correo, sesion);
         

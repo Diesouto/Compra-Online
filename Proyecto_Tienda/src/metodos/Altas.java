@@ -21,10 +21,11 @@ public class Altas {
     
     public static BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
      
-        public static void crearCuenta() throws IOException{
+        public static Cuenta crearCuenta() throws IOException{
         
         /*Obliga a crear un cliente*/
         Cliente cliente = Altas.crearCliente();
+        Cuenta cuenta = null;
         if(cliente != null){
             System.out.println("\nCREAR CUENTA");
             System.out.print("Usuario: ");
@@ -37,14 +38,16 @@ public class Altas {
             Cesta cesta = new Cesta(date,aux);
             
             /*Falta comprobar que el nombre de usuario no está cogido*/
-            Cuenta cuenta = new Cuenta (usuario, password, cliente, cesta);
+            cuenta = new Cuenta (usuario, password, cliente, cesta);
             Guardar.guardarObjeto(cesta);
             Guardar.guardarObjeto(cuenta);
+            
+            
         }else{
         System.out.println("\nEste correo ya existe! Pruebe iniciar sesion...");
     }
-        
-    }
+        return cuenta;
+}
     
     protected static Cliente crearCliente() throws IOException{
                 
