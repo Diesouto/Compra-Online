@@ -32,6 +32,9 @@ public class Cesta implements Serializable{
     @OneToMany()
     private List<Producto> productos;
 
+    public Cesta() {
+    }    
+
     public Cesta(int id_cesta, Date fechaAñadido, List<Producto> productos) {
         this.id_cesta = id_cesta;
         this.fechaAñadido = fechaAñadido;

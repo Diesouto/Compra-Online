@@ -28,16 +28,9 @@ public class Proyecto_Tienda {
     public static void main(String[] args) throws IOException {
         BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
         sesion = new Sesion(); //Se crea una sesion vacia (no logeado)
-        
+     
         //Se muestra el menu principal
-        Menu.menuPrincipal(sesion);
-        
-        
-        
-        Cuenta cuenta = AccionesUsuario.iniciarSesion(lee);
-        if( cuenta != null){
-            sesion = new Sesion(cuenta.getCorreo_electronico());
-        }
+        Menu.menuPrincipal(sesion);   
         
         //Altas.crearCuenta();
         HibernateUtil.cerrarSession();

@@ -26,20 +26,21 @@ public class Altas {
         /*Obliga a crear un cliente*/
         Cliente cliente = Altas.crearCliente();
         if(cliente != null){
-        System.out.println("CREAR CUENTA");
-        System.out.print("Usuario: ");
-        String usuario = cliente.getCorreo_electronico();
-        System.out.print(usuario +"\n");
-        System.out.print("Contraseña: ");
-        String password = lee.readLine();
-        Date date = new Date();
-        ArrayList<Producto> aux = new ArrayList<>();
-        Cesta cesta = new Cesta(date,aux);
-        
-        /*Falta comprobar que el nombre de usuario no está cogido*/
-        Cuenta cuenta = new Cuenta (usuario, password, cliente, cesta);
-        
-        Guardar.guardarObjeto(cuenta);}{
+            System.out.println("\nCREAR CUENTA");
+            System.out.print("Usuario: ");
+            String usuario = cliente.getCorreo_electronico();
+            System.out.print(usuario +"\n");
+            System.out.print("Contraseña: ");
+            String password = lee.readLine();
+            Date date = new Date();
+            ArrayList<Producto> aux = new ArrayList<>();
+            Cesta cesta = new Cesta(date,aux);
+            
+            /*Falta comprobar que el nombre de usuario no está cogido*/
+            Cuenta cuenta = new Cuenta (usuario, password, cliente, cesta);
+            Guardar.guardarObjeto(cesta);
+            Guardar.guardarObjeto(cuenta);
+        }else{
         System.out.println("\nEste correo ya existe! Pruebe iniciar sesion...");
     }
         

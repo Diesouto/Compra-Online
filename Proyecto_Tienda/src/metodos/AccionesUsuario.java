@@ -60,19 +60,26 @@ public class AccionesUsuario {
         session.close();
         if(producto!=null){
             System.out.println(producto.toString());
-            System.out.println("Meter en cesta?");
+           
             String eleccion = "";
             do{
+                System.out.println("Meter en cesta?");
                 eleccion = teclado.nextLine();
-                if(eleccion.equalsIgnoreCase("si") && sesion.isLogeado()){
-                    //Sin finalizar
-                    Cuenta cuenta = getCuenta(sesion.getToken(),session);
-                    cuenta.getCesta().getProductos().add(producto);
-                    System.out.println("Se ha añadido a tu cesta");
-                    
-
+                if(eleccion.equalsIgnoreCase("si")){
+                    if(sesion.isLogeado()){
+                        Cuenta cuenta = getCuenta(sesion.getToken(),session);
+                        cuenta.getCesta().getProductos().add(producto);
+                        System.out.println("Se ha añadido a tu cesta");
+                        break;
+                    }else{
+                        System.out.println("Debes tener una sesion iniciada para usar esta funcion.");
+                        break;
+                    }
+                }else{
+                    System.out.println("No has introducido una eleccion valida");
                 }
-            }while(eleccion.equalsIgnoreCase("No"));
+                
+            }while(!eleccion.equalsIgnoreCase("No"));
             
             
         }else{
@@ -104,7 +111,7 @@ public class AccionesUsuario {
     public static Producto getProducto(String searchProducto, Session sesion){
         
         Criteria c = sesion.createCriteria(Producto.class);
-        c.add(Restrictions.eq("idProducto", searchProducto));
+        c.add(Restrictions.eq("idProducto", Integer.parseInt(searchProducto)));
 
         Producto cls = (Producto) c.uniqueResult();
 

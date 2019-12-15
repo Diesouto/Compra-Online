@@ -33,16 +33,15 @@ public class Sesion {
         return logeado;
     }
 
-    public void setLogeado(boolean logeado) {
-        this.logeado = logeado;
-    }
 
     public String getToken() {
         return token;
     }
 
-    public void setToken(String token) {
+    public void logear(String token) {
         this.token = token;
+        this.logeado = true;
+        
     }
     
     

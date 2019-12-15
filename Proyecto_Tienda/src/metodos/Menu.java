@@ -7,6 +7,8 @@ package metodos;
 
 import POJOS.Sesion;
 import java.io.*;
+import POJOS.Cuenta;
+import static proyecto_tienda.Proyecto_Tienda.sesion;
 
 /**
  *
@@ -55,12 +57,22 @@ public class Menu {
         
         byte op;
         do{
-            System.out.println("----MENÚ PRINCIPAL--- \n"
-                + "1. Ver productos \n"
-                + "2. Seleccionar producto"
-                + "3. Ver cesta y realizar compra \n"
-                + "4. Modificar datos usuario \n"
-                + "5. Cerrar sesión \n");
+            if(s.isLogeado()){
+                System.out.println("----MENÚ PRINCIPAL--- \n"
+                    + "1. Ver productos \n"
+                    + "2. Seleccionar producto\n"
+                    + "3. Ver cesta y realizar compra \n"
+                    + "4. Modificar datos usuario \n"
+                    + "5. Cerrar sesión \n");
+            }else if (!s.isLogeado()){
+                System.out.println("----MENÚ PRINCIPAL--- \n"
+                    + "1. Ver productos \n"
+                    + "2. Seleccionar producto\n"
+                    + "3. Ver cesta y realizar compra \n"
+                    + "4. Modificar datos usuario \n"
+                    + "5. Cerrar sesión \n"
+                    + "6. Iniciar sesion\n");
+            }
             
             op = Byte.parseByte(lee.readLine());
             try{
@@ -71,6 +83,7 @@ public class Menu {
                         
                     case 2:
                         AccionesUsuario.concretarProducto(s);
+                        break;
                     case 3:
                         if(s.isLogeado() == true){
                             //Consultas.verCesta(lee);
@@ -89,13 +102,19 @@ public class Menu {
                     case 5:
                         Menu.menuPrincipal(s);
                         //TODO: cerrar sesion
-                        break;  
+                        break;
+                    case 6:
+                        if(!s.isLogeado() == true){
+                            Cuenta cuentaIniciar = AccionesUsuario.iniciarSesion(lee);
+                            s.logear(cuentaIniciar.getCorreo_electronico());                           
+                        }
+                        break;
                 }
                 
             }catch(Exception e){
                 System.out.println(e.getMessage());
             }        
-        } while(op!=4);
+        } while(op!=7);
     } 
   
     //TODO: arreglar
