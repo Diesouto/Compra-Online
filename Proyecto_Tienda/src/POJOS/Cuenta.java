@@ -66,8 +66,4 @@ public class Cuenta implements Serializable {
     public void setCesta(Cesta cesta) {
         this.cesta = cesta;
     }
-    
-    
-    
-    
 }
