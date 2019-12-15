@@ -8,6 +8,7 @@ package metodos;
 import POJOS.Cliente;
 import POJOS.Cuenta;
 import POJOS.Producto;
+import POJOS.Sesion;
 import hibernate.HibernateUtil;
 import java.io.*;
 import java.util.Scanner;
@@ -50,21 +51,25 @@ public class AccionesUsuario {
         return cuentaIniciada;
     }
     
-    public static void concretarPedido(){
+    public static void concretarPedido(Sesion sesion){
         System.out.println("Introduce el id del producto deseado");
         Scanner teclado = new Scanner(System.in);
         String  pedido = teclado.nextLine();
-        Session sesion = HibernateUtil.getSession();
-        Producto producto = getProducto(pedido, sesion);
-        sesion.close();
+        Session session = HibernateUtil.getSession();
+        Producto producto = getProducto(pedido, session);
+        session.close();
         if(producto!=null){
             System.out.println(producto.toString());
             System.out.println("Meter en cesta?");
             String eleccion = "";
             do{
                 eleccion = teclado.nextLine();
-                if(eleccion.equalsIgnoreCase("si")){
+                if(eleccion.equalsIgnoreCase("si") && sesion.isLogeado()){
                     //Sin finalizar
+                    Cuenta cuenta = getCuenta(sesion.getToken(),session);
+                    cuenta.getCesta().getProductos().add(producto);
+                    System.out.println("Se ha añadido a tu cesta");
+                    
 
                 }
             }while(eleccion.equalsIgnoreCase("No"));

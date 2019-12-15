@@ -50,6 +50,24 @@ public class Cuenta implements Serializable {
     public void setCorreo_electronico(String correo_electronico) {
         this.correo_electronico = correo_electronico;
     }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Cesta getCesta() {
+        return cesta;
+    }
+
+    public void setCesta(Cesta cesta) {
+        this.cesta = cesta;
+    }
+    
+    
     
     
 }
