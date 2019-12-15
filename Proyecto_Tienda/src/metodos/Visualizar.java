@@ -37,4 +37,14 @@ public class Visualizar {
         }
         HibernateUtil.cerrarSession();
     }
+    
+    public static void cesta(){
+        Session sesion = HibernateUtil.getSession();
+        //se deberia rediseñar lo de la cesta. aqui va la consulta para pillar la cesta.
+        Query query = sesion.createQuery("SELECT p FROM Cliente p");
+        
+        //metodo para visualizar cesta
+        
+        sesion.close();
+    }
 }
