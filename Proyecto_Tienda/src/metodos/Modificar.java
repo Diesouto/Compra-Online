@@ -58,14 +58,23 @@ public class Modificar {
         updateCuenta(cuenta);
     }
     
-    public static void dirección(Cliente cliente) throws IOException{
+    public static void dirección(Cuenta cuenta) throws IOException{
         System.out.println("Itroduce nueva direccion: ");
         String direccion = lee.readLine();
-        cliente.setDireccion(direccion);
+        cuenta.getCliente().setDireccion(direccion);
+        updateCuenta(cuenta);
     }
     
-    public static void usuario(Cliente cliente) throws IOException{
+    public static void usuario(Cuenta cuenta) throws IOException{
+        System.out.println("Introduce nuevo email: ");
+        String email = lee.readLine();
+        System.out.println("Introduce nueva contraseña: ");
+        String contraseña = lee.readLine();
         
+        cuenta.getCliente().setCorreo_electronico(email);
+        cuenta.setCorreo_electronico(email);
+        cuenta.setContraseña(contraseña);
+        updateCuenta(cuenta);
     }
     
     public static void telefono(Cuenta cuenta) throws IOException{
@@ -75,6 +84,7 @@ public class Modificar {
         updateCuenta(cuenta);
     }
     
+
     public static void precio(Producto producto) throws IOException{
         System.out.println("Introduce nuevo precio");
         float precio = Float.parseFloat(lee.readLine());
@@ -105,6 +115,7 @@ public class Modificar {
     
     
     
+
     public static void updateCuenta(Cuenta cuenta) {
         Session session = HibernateUtil.getSession(); 
         Transaction tx = session.beginTransaction();

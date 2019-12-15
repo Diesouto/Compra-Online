@@ -161,8 +161,18 @@ public class AccionesUsuario {
         List <Producto> productosComprados = cuenta.getCesta().getProductos();
         float precioTotal = cuenta.getCesta().calcularPrecio();
         
-        Factura factura = new Factura(fecha, precioTotal, productosComprados);
-        
+        if(cuenta.getCliente().gastarDinero(precioTotal)==true){
+            Factura factura = new Factura(fecha, precioTotal, productosComprados);
+            System.out.println("Comprado");
+            cuenta.getCliente().getFacturas().add(factura);
+            Transaction tx = session.beginTransaction();
+            session.update(cuenta);
+            session.flush();
+            tx.commit();
+        }
+        else{
+            System.out.println("No puedes permitirtelo.");
+        }
     }
     
     public static Cuenta getCuenta(String correo, Session sesion) {
