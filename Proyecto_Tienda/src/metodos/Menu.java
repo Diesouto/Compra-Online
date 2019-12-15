@@ -5,6 +5,7 @@
  */
 package metodos;
 
+import POJOS.Cliente;
 import POJOS.Sesion;
 import java.io.*;
 import POJOS.Cuenta;
@@ -194,6 +195,7 @@ public class Menu {
         
         Session session = HibernateUtil.getSession();
                             Cuenta cuenta=AccionesUsuario.getCuenta(s.getToken(), session);
+                            Cliente cliente = AccionesUsuario.getCliente(s.getToken(), session);    
                             session.close();
 
         do{
@@ -204,10 +206,8 @@ public class Menu {
                     + "4. Modificar dni \n"
                     + "5. Modificar fecha de nacimiento \n"
                     + "6. Modificar dirección \n"
-                    + "7. Modificar usuario \n"
-                    + "8. Modificar telefono \n"
-                    + "9. Modificar tarjeta \n"
-                    + "10. Volver al menú \n");
+                    + "7. Modificar telefono \n"
+                    + "8. Volver al menú \n");
         
 
             op = Byte.parseByte(lee.readLine());
@@ -229,20 +229,15 @@ public class Menu {
                         Modificar.fecha_nacimiento(cuenta);
                         break;
                     case 6:
-                        //Modificar.dirección(cuenta);
+                        Modificar.dirección(cliente);
                         break;
                     case 7:
-                        //Modificar.usuario(cuenta);
-                        break;
-                    case 8:
                         Modificar.telefono(cuenta);
                         break;
-                    case 9:
-                        //Modificar.tarjeta(cuenta);
+                    case 8:
+                        Menu.menuPrincipal(s);
                         break;
-                    case 10:
-                        //Menu.menuPrincipal();
-                }
+                }    
             }catch(Exception e){
                 System.out.println(e.getMessage());
             }        

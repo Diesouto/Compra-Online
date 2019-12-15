@@ -7,8 +7,6 @@ package POJOS;
 
 import java.util.Date;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.*;
 
 
@@ -39,28 +37,23 @@ public class Cliente implements Serializable{
     @Column (name = "telefono", unique = true)
     private String telefono;
     
+    @Column (name = "direccion")
+    private String direccion;
+    
   
 
     public Cliente() {
     }
 
     
-    public Cliente(String nombre, String apellidos, String dni, String correo_electronico, Date fecha_nacimiento) {
+    public Cliente(String nombre, String apellidos, String dni, String correo_electronico, Date fecha_nacimiento, String telefono, String direccion) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
         this.correo_electronico = correo_electronico;
         this.fecha_nacimiento = fecha_nacimiento;
         this.telefono = telefono;
-        
-    }
-    // Este es de prueba
-    public Cliente(String nombre, String apellidos, String dni, String correo_electronico, String telefono) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.dni = dni;
-        this.correo_electronico = correo_electronico;
-        this.telefono = telefono;
+        this.direccion = direccion;
         
     }
 
@@ -112,15 +105,19 @@ public class Cliente implements Serializable{
         this.telefono = telefono;
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
 
     @Override
     public String toString() {
-        return "Nombre=" + nombre
-                + "Apellidos=" + apellidos
-                + "Dni=" + dni
-                + "Correo_electronico=" + correo_electronico
-                + "Fecha_nacimiento=" + fecha_nacimiento
-                + "Telefono=" + telefono;
+        return "Cliente{" + "nombre=" + nombre + ", apellidos=" + apellidos + ", dni=" + dni + ", correo_electronico=" + correo_electronico + ", fecha_nacimiento=" + fecha_nacimiento + ", telefono=" + telefono + ", direccion=" + direccion + '}';
     }
+
+    
     
 }

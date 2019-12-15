@@ -10,17 +10,11 @@ import java.io.IOException;
 import hibernate.HibernateUtil;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.List;
-import metodos.AccionesUsuario;
-import metodos.Altas;
 import metodos.Menu;
-import metodos.Modificar;
-import metodos.Visualizar;
-import org.hibernate.Query;
-import org.hibernate.Session;
+
 /**
  *
- * @author a18oscarbg
+ * @author SkXrTh3W33b
  */
 public class Proyecto_Tienda {
     public static Sesion sesion;

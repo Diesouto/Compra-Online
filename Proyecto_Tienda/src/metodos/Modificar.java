@@ -58,7 +58,9 @@ public class Modificar {
     }
     
     public static void dirección(Cliente cliente) throws IOException{
-        
+        System.out.println("Itroduce nueva direccion: ");
+        String direccion = lee.readLine();
+        cliente.setDireccion(direccion);
     }
     
     public static void usuario(Cliente cliente) throws IOException{
