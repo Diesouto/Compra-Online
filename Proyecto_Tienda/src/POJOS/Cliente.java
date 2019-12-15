@@ -40,13 +40,16 @@ public class Cliente implements Serializable{
     @Column (name = "direccion")
     private String direccion;
     
+    @Column (name = "saldo")
+    private float saldo;
+    
   
 
     public Cliente() {
     }
 
     
-    public Cliente(String nombre, String apellidos, String dni, String correo_electronico, Date fecha_nacimiento, String telefono, String direccion) {
+    public Cliente(String nombre, String apellidos, String dni, String correo_electronico, Date fecha_nacimiento, String telefono, String direccion, float saldo) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -54,6 +57,7 @@ public class Cliente implements Serializable{
         this.fecha_nacimiento = fecha_nacimiento;
         this.telefono = telefono;
         this.direccion = direccion;
+        this.saldo = saldo;
         
     }
 
@@ -109,15 +113,37 @@ public class Cliente implements Serializable{
         return direccion;
     }
 
+    public float getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(float saldo) {
+        this.saldo = saldo;
+    }
+    
+    public void gastarDinero(float gasto){
+        if((this.saldo-gasto)<0){
+            System.out.println("No puedes permitirtelo.");
+        }else{
+            this.saldo = this.saldo-gasto;
+                System.out.println("Comprado");
+        }
+    }
+    
+    public void añadirFondos(float fondos){
+        this.saldo += fondos;
+    }
+
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
     @Override
     public String toString() {
-        return "Cliente{" + "nombre=" + nombre + ", apellidos=" + apellidos + ", dni=" + dni + ", correo_electronico=" + correo_electronico + ", fecha_nacimiento=" + fecha_nacimiento + ", telefono=" + telefono + ", direccion=" + direccion + '}';
+        return "Cliente{" + "nombre=" + nombre + ", apellidos=" + apellidos + ", dni=" + dni + ", correo_electronico=" + correo_electronico + ", fecha_nacimiento=" + fecha_nacimiento + ", telefono=" + telefono + ", direccion=" + direccion + ", saldo=" + saldo + '}';
     }
 
+    
     
     
 }
