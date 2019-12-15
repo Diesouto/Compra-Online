@@ -125,6 +125,30 @@ public class AccionesUsuario {
         }    
     }
     
+    public static void vaciarCesta(Sesion sesion) {
+        
+        Scanner teclado = new Scanner(System.in);
+        
+        Session session = HibernateUtil.getSession();
+        Cuenta cuenta = getCuenta(sesion.getToken(),session);
+            
+        System.out.println("Desea vaciar la cesta?");
+        String eleccion = teclado.nextLine();
+            
+        if(eleccion.equalsIgnoreCase("si")){
+            cuenta.getCesta().vaciarCesta();
+            Transaction tx = session.beginTransaction();
+            session.update(cuenta);
+            session.flush();
+            tx.commit();
+            System.out.println("Se ha vaciado la cesta");
+        }
+        else{
+            System.out.println("Borrado cancelado");
+        }
+            
+    }
+    
     public static Cuenta getCuenta(String correo, Session sesion) {
 
         Criteria c = sesion.createCriteria(Cuenta.class);

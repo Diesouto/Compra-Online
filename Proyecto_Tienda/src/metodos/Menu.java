@@ -163,8 +163,10 @@ public class Menu {
         
         System.out.println("----MENÚ CESTA--- \n"
                 + "1. Comprar \n"
-                + "2. Eliminar artículos \n"
-                + "3. Volver al menú \n");
+                + "2. Visualizar cesta \n"
+                + "3. Eliminar artículos \n"
+                + "4. Vaciar cesta \n"
+                + "5. Volver al menú \n");
         
         op = Byte.parseByte(lee.readLine());
         
@@ -172,20 +174,26 @@ public class Menu {
             try{
                 switch(op){
                     case 1:
-                        
+                        AccionesUsuario.añadirProducto(s);
                         break;
                     case 2:
-//                        Bajas.borrarArticulo();
-                        break;
+                        Visualizar.cesta(s);
+                        break;    
                     case 3:
-                          Menu.menuPrincipal(s);
-                          break;
+                        AccionesUsuario.quitarCesta(s);
+                        break;
+                    case 4:
+                        AccionesUsuario.vaciarCesta(s);
+                        break;
+                    case 5:
+                        Menu.menuPrincipal(s);
+                        break;      
                 }
                 
             }catch(Exception e){
                 System.out.println(e.getMessage());
             }        
-        } while(op!=3);
+        } while(op!=5);
     }    
     
     public static void menuModificar(BufferedReader lee, Sesion s) throws IOException{
