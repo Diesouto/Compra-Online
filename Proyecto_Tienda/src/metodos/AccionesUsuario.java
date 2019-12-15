@@ -5,12 +5,12 @@
  */
 package metodos;
 
-import POJOS.Cliente;
-import POJOS.Cuenta;
-import POJOS.Producto;
-import POJOS.Sesion;
+import POJOS.*;
 import hibernate.HibernateUtil;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -147,6 +147,18 @@ public class AccionesUsuario {
             System.out.println("Borrado cancelado");
         }
             
+    }
+    
+    public static void comprarCarro(Sesion sesion) {
+        
+        Session session = HibernateUtil.getSession();
+        Cuenta cuenta = getCuenta(sesion.getToken(),session);
+        Date fecha = new Date();
+        List <Producto> productosComprados = cuenta.getCesta().getProductos();
+        float precioTotal = cuenta.getCesta().calcularPrecio();
+        
+        Factura factura = new Factura(fecha, precioTotal, productosComprados);
+        
     }
     
     public static Cuenta getCuenta(String correo, Session sesion) {
