@@ -1,6 +1,8 @@
 package POJOS;
 
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -28,30 +30,18 @@ public class Producto implements Serializable{
     @Column (name = "descripcion")
     private String descripcion;
     
-
+    private PropertyChangeSupport propertySupport;
+    private final int stockMinimo = 0;
 
     public Producto() {
     }
 
-    public Producto(int idProducto, float precio, int stock, String nombre, String descripcion) {
-        this.idProducto = idProducto;
+    public Producto(float precio, int stock, String nombre, String descripcion) {
         this.precio = precio;
         this.stock = stock;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        
-        
-    }
-
-    
-    
-    public Producto(/*int idProducto, */float precio, int stock, String nombre, String descripcion/*, Proveedor proveedor*/) {
-        //this.idProducto = idProducto;
-        this.precio = precio;
-        this.stock = stock;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        //this.proveedor = proveedor;
+        this.propertySupport = new PropertyChangeSupport(this);
     }
 
     public int getIdProducto() {
@@ -73,9 +63,13 @@ public class Producto implements Serializable{
     public int getStock() {
         return stock;
     }
-
-    public void setStock(int stock) {
-        this.stock = stock;
+    
+    public void setStock(int valorNuevo) {
+        
+        if(valorNuevo<stockMinimo)
+            propertySupport.firePropertyChange("stockActual",stock,valorNuevo);
+        else 
+            stock=valorNuevo;
     }
 
     public String getNombre() {
@@ -109,6 +103,12 @@ public class Producto implements Serializable{
                 + "\n\tDescripcion: " + descripcion;
     }
     
+    public void addListener(PropertyChangeListener listener) {
+        propertySupport.addPropertyChangeListener(listener);
+    }
     
+    public void removeListener(PropertyChangeListener listener) {
+        propertySupport.removePropertyChangeListener(listener);
+    }
     
 }
