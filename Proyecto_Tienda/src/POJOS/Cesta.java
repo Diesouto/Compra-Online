@@ -87,4 +87,16 @@ public class Cesta implements Serializable{
             System.out.println(productos.get(i).toStringLite());
         }
     }
+    
+    public void añadirProducto(Producto producto){
+        productos.add(producto);
+    }
+    
+    public void quitarProducto(int posicion){
+        productos.remove(posicion);
+    }
+    
+    public void vaciarCesta() {
+        productos.clear();
+    }
 }

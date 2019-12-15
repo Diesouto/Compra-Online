@@ -52,7 +52,7 @@ public class AccionesUsuario {
         return cuentaIniciada;
     }
     
-    public static void concretarProducto(Sesion sesion){
+    public static void añadirProducto(Sesion sesion){
         System.out.println("Introduce el id del producto deseado");
         Scanner teclado = new Scanner(System.in);
         String  pedido = teclado.nextLine();
@@ -94,6 +94,36 @@ public class AccionesUsuario {
         }
     }
     
+    public static void quitarCesta(Sesion sesion) {
+        
+        Session session = HibernateUtil.getSession();
+        Cuenta cuenta = getCuenta(sesion.getToken(),session);
+        
+        System.out.print("Posición del producto a eliminar: ");
+        Scanner teclado = new Scanner(System.in);
+        int  borrar = Integer.parseInt(teclado.nextLine());
+        
+        try {
+            System.out.print(cuenta.getCesta().getProductos().get(borrar).toString());
+            
+            System.out.println("Desea eliminar este producto de la cesta?");
+            String eleccion = teclado.nextLine();
+            
+            if(eleccion.equalsIgnoreCase("si")){
+                cuenta.getCesta().quitarProducto(borrar);
+                Transaction tx = session.beginTransaction();
+                session.update(cuenta);
+                session.flush();
+                tx.commit();
+                System.out.println("Se ha eliminado el producto de la cesta");
+            }
+            else{
+                System.out.println("Borrado cancelado");
+            }
+        } catch(Exception e) {
+            System.out.print("No hay producto en esa posición");
+        }    
+    }
     
     public static Cuenta getCuenta(String correo, Session sesion) {
 

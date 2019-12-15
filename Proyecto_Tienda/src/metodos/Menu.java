@@ -83,7 +83,7 @@ public class Menu {
                         break;
                         
                     case 2:
-                        AccionesUsuario.concretarProducto(s);
+                        AccionesUsuario.añadirProducto(s);
                         break;
                     case 3:
                         if(s.isLogeado() == true){
