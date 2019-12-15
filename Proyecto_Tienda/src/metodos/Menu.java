@@ -70,8 +70,9 @@ public class Menu {
                         break;
                         
                     case 2:
-                        //TODO: preguntar por un ID de un producto. Mostrar ese producto en detalle y
-                        // mostrar opciones: meter en cesta, o salir.
+                        System.out.println("Introduce el numero de producto: ");
+                        // TODO: Leer num producto
+                        AccionesUsuario.concretarProducto(/*numProducto*/);
                     case 3:
                         if(s.isLogeado() == true){
                             //Consultas.verCesta(lee);

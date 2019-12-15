@@ -51,7 +51,7 @@ public class AccionesUsuario {
         return cuentaIniciada;
     }
     
-    public static void concretarPedido(Sesion sesion){
+    public static void concretarProducto(Sesion sesion){
         System.out.println("Introduce el id del producto deseado");
         Scanner teclado = new Scanner(System.in);
         String  pedido = teclado.nextLine();
