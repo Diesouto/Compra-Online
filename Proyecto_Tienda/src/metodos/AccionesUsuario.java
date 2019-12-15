@@ -153,7 +153,7 @@ public class AccionesUsuario {
             
     }
     
-    //Falta controlar que no sea menor a 0 con el Listener
+    
     public static void reducirStockCesta(Sesion sesion) throws IOException {
         
         BufferedReader lee = new BufferedReader (new InputStreamReader (System.in));
@@ -186,7 +186,6 @@ public class AccionesUsuario {
                     cuenta.getCesta().getProductos().get(i).setStock(stockPostVenta);
                 }    
         }
-        cuenta.getCesta().vaciarCesta();
         Transaction tx = session.beginTransaction();
         session.update(cuenta);
         session.flush();
@@ -194,7 +193,7 @@ public class AccionesUsuario {
         
     }
     
-    public static void comprarCarro(Sesion sesion) {
+    public static void comprarCarro(Sesion sesion) throws IOException {
         
         Session session = HibernateUtil.getSession();
         Cuenta cuenta = getCuenta(sesion.getToken(),session);
@@ -206,6 +205,8 @@ public class AccionesUsuario {
             Factura factura = new Factura(fecha, precioTotal, productosComprados);
             System.out.println("Comprado");
             cuenta.getCliente().getFacturas().add(factura);
+            reducirStockCesta(sesion);
+            vaciarCesta(sesion);
             Transaction tx = session.beginTransaction();
             session.update(cuenta);
             session.flush();
