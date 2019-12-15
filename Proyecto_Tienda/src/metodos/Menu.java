@@ -70,9 +70,7 @@ public class Menu {
                         break;
                         
                     case 2:
-                        System.out.println("Introduce el numero de producto: ");
-                        // TODO: Leer num producto
-                        AccionesUsuario.concretarProducto(/*numProducto*/);
+                        AccionesUsuario.concretarProducto(s);
                     case 3:
                         if(s.isLogeado() == true){
                             //Consultas.verCesta(lee);
