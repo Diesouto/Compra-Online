@@ -14,6 +14,7 @@ import java.io.*;
 import java.util.Scanner;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -67,9 +68,19 @@ public class AccionesUsuario {
                 eleccion = teclado.nextLine();
                 if(eleccion.equalsIgnoreCase("si")){
                     if(sesion.isLogeado()){
+                        session = HibernateUtil.getSession();
                         Cuenta cuenta = getCuenta(sesion.getToken(),session);
-                        cuenta.getCesta().getProductos().add(producto);
+                        Transaction tx = session.beginTransaction();
+                        cuenta.getCesta().getProductos().add(producto); 
+                        session.update(cuenta);
+                        session.flush();
+                        tx.commit();
+                        
+                        
+                        
+                        
                         System.out.println("Se ha añadido a tu cesta");
+                        session.close();
                         break;
                     }else{
                         System.out.println("Debes tener una sesion iniciada para usar esta funcion.");
