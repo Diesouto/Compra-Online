@@ -50,12 +50,12 @@ public class AccionesUsuario {
         return cuentaIniciada;
     }
     
-    public static void concretarPedido(){
+    public static void concretarProducto(){
         System.out.println("Introduce el id del producto deseado");
         Scanner teclado = new Scanner(System.in);
-        String  pedido = teclado.nextLine();
+        String  prod = teclado.nextLine();
         Session sesion = HibernateUtil.getSession();
-        Producto producto = getProducto(pedido, sesion);
+        Producto producto = getProducto(prod, sesion);
         sesion.close();
         if(producto!=null){
             System.out.println(producto.toString());
