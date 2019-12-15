@@ -68,8 +68,10 @@ public class Altas {
         System.out.print("Fecha de nacimiento (xx/xx/xxxx): \n");
         Date fecha_nacimiento = Validar.validarFecha();
         String telefono = Validar.telefono();
+        System.out.println("Direccion: ");
+        String direccion = lee.readLine();
         
-        cliente = new Cliente(nombre, apellidos, dni, correo, fecha_nacimiento);
+        cliente = new Cliente(nombre, apellidos, dni, correo, fecha_nacimiento, telefono, direccion);
         }
         sesion.close();
         return cliente;
