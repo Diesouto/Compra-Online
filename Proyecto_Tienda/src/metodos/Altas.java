@@ -5,7 +5,7 @@
  */
 package metodos;
 
-import JavaBeans.Proveedor;
+
 import POJOS.*;
 import hibernate.HibernateUtil;
 import java.io.*;
@@ -74,57 +74,7 @@ public class Altas {
         sesion.close();
         return cliente;
     }
-    
-    public static void addTarjeta(Cliente cliente) throws IOException{
-        
-        System.out.println("AÑADIR TARJETA");
-        System.out.print("Número de tarjeta: ");
-        String numero = lee.readLine();
-        System.out.print("Contraseña: ");
-        int contraseña = Integer.parseInt(lee.readLine());
-        System.out.print("Fecha vencimiento: ");
-        Date fechaVencimiento = Validar.validarFecha();
-        System.out.print("Nombre del propietario: ");
-        String nombre = lee.readLine();
-        
-        Tarjeta tarjeta = new Tarjeta(numero, contraseña, fechaVencimiento, nombre);
-        
-        cliente.getTarjetas().add(tarjeta);
-    }
-    
-    
-    public static Direccion insertDireccion() throws IOException{
-        
-        System.out.println("AÑADIR DIRECCION");
-        System.out.print("Nombre de la calle: ");
-        String calle = lee.readLine();
-        System.out.print("Número de la calle: ");
-        int num_calle = Integer.parseInt(lee.readLine());
-        System.out.print("Código postal: ");
-        int cod_postal = Integer.parseInt(lee.readLine());
-        System.out.print("Ciudad: ");
-        String ciudad = lee.readLine();
-        System.out.print("País: ");
-        String pais = lee.readLine();
-        
-        Direccion direccion = new Direccion(calle, num_calle, cod_postal, ciudad, pais);
-        
-        return direccion;
-    }
-    
-    public static void insertProveedor() throws IOException{
-        System.out.println("INSERTAR PROVEEDOR");
-        System.out.println("nombre:");
-        String nombre = lee.readLine();
-        System.out.println("Direccion:");
-        Direccion direccion = insertDireccion();
-        System.out.println("Telefono: ");
-        String tlf = lee.readLine();
-        
-        Proveedor aux = new Proveedor(nombre,direccion,tlf);
-    }
-    
-    
+   
     public static void insertProducto() throws IOException{
         
         System.out.println("INSERTAR PRODUCTO");

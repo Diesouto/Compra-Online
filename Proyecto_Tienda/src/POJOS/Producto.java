@@ -1,6 +1,6 @@
 package POJOS;
 
-import JavaBeans.Proveedor;
+
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -28,19 +28,18 @@ public class Producto implements Serializable{
     @Column (name = "descripcion")
     private String descripcion;
     
-    @OneToOne
-    private Proveedor proveedor;
+
 
     public Producto() {
     }
 
-    public Producto(int idProducto, float precio, int stock, String nombre, String descripcion, Proveedor proveedor) {
+    public Producto(int idProducto, float precio, int stock, String nombre, String descripcion) {
         this.idProducto = idProducto;
         this.precio = precio;
         this.stock = stock;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.proveedor = proveedor;
+        
         
     }
 
@@ -95,13 +94,7 @@ public class Producto implements Serializable{
         this.descripcion = descripcion;
     }
 
-    public Proveedor getProveedor() {
-        return proveedor;
-    }
-
-    public void setProveedor(Proveedor proveedor) {
-        this.proveedor = proveedor;
-    }
+    
     public String toStringLite() {
         return "Producto de Id: " + idProducto 
                 + "\n\tNombre: " + nombre + '\n';
@@ -113,8 +106,7 @@ public class Producto implements Serializable{
                 + "\n\tPrecio: " + precio 
                 + "\n\tStock: " + stock 
                 + "\n\tNombre: " + nombre 
-                + "\n\tDescripcion: " + descripcion 
-                + "\n\tProveedor: " + proveedor + '\n';
+                + "\n\tDescripcion: " + descripcion;
     }
     
     

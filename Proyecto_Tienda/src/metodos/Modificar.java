@@ -1,12 +1,15 @@
 package metodos;
 
 import POJOS.Cliente;
+import POJOS.Cuenta;
+import POJOS.Sesion;
 import hibernate.HibernateUtil;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Date;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -17,35 +20,41 @@ public class Modificar {
     public static BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
     
     
-    public static void nombre(Cliente cliente) throws IOException{
-        System.out.print("Introducir nuevo nombre: ");
+    public static void nombre(Cuenta cuenta) throws IOException{
+        System.out.println("Introduzca el nuevo nombre");
         String nombre = lee.readLine();
-        cliente.setNombre(nombre);
-        Modificar.guardar();
+        cuenta.getCliente().setNombre(nombre);
+        updateCuenta(cuenta);
     }
     
-    public static void apellidos(Cliente cliente) throws IOException{
+    public static void apellidos(Cuenta cuenta) throws IOException{
         System.out.print("Introducir nuevos apellidos: ");
         String apellidos = lee.readLine();
-        cliente.setApellidos(apellidos);
+        cuenta.getCliente().setApellidos(apellidos);
+        updateCuenta(cuenta);
     }
     
-    public static void correo(Cliente cliente) throws IOException{
+    public static void correo(Cuenta cuenta, Sesion s) throws IOException{
         System.out.print("Introducir nuevo correo: ");
-        String correo_nuevo = lee.readLine();
-        cliente.setCorreo_electronico(correo_nuevo);
+        String correo = lee.readLine();
+        cuenta.setCorreo_electronico(correo);
+        updateCuenta(cuenta);
+        s.logear(correo);
+        System.out.println(s.getToken());
     }
     
-    public static void dni(Cliente cliente) throws IOException{
+    public static void dni(Cuenta cuenta) throws IOException{
         System.out.print("Introduce nuevo dni: ");
-        String dni = Validar.dni();
-        cliente.setDni(dni);
+        String dni = lee.readLine();
+        cuenta.getCliente().setDni(dni);
+        updateCuenta(cuenta);
     }
     
-    public static void fecha_nacimiento(Cliente cliente) throws IOException{
+    public static void fecha_nacimiento(Cuenta cuenta) throws IOException{
         System.out.print("Introduce nueva fecha de nacimiento: ");
-        Date fecha_nacimiento = Validar.validarFecha();
-        cliente.setFecha_nacimiento(fecha_nacimiento);
+        Date vfecha = Validar.validarFecha();
+        cuenta.getCliente().setFecha_nacimiento(vfecha);
+        updateCuenta(cuenta);
     }
     
     public static void dirección(Cliente cliente) throws IOException{
@@ -56,20 +65,24 @@ public class Modificar {
         
     }
     
-    public static void telefono(Cliente cliente) throws IOException{
+    public static void telefono(Cuenta cuenta) throws IOException{
         System.out.println("Introduce nuevo telefono");
-        String telefono = Validar.telefono();
-        cliente.setTelefono(telefono);
+        String tlf = Validar.telefono();
+        cuenta.getCliente().setTelefono(tlf);
+        updateCuenta(cuenta);
     }
     
     public static void tarjeta(Cliente cliente) throws IOException{
         
     }
     
-    public static void guardar() {
-        Session sesion = HibernateUtil.getSession();
-        sesion.getTransaction().commit();
-        System.out.println("Cliente actualizado");
+    public static void updateCuenta(Cuenta cuenta) {
+        Session session = HibernateUtil.getSession(); 
+        Transaction tx = session.beginTransaction();
+        session.update(cuenta);
+        session.flush();
+        tx.commit();
+        session.close();
     }
     
     /*

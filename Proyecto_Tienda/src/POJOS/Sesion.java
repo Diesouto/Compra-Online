@@ -44,5 +44,10 @@ public class Sesion {
         
     }
     
+    public void logout(){
+        this.token = "guest";
+        this.logeado = false;  
+    }
+    
     
 }

@@ -8,7 +8,8 @@ package metodos;
 import POJOS.Sesion;
 import java.io.*;
 import POJOS.Cuenta;
-import static proyecto_tienda.Proyecto_Tienda.sesion;
+import hibernate.HibernateUtil;
+import org.hibernate.Session;
 
 /**
  *
@@ -93,17 +94,22 @@ public class Menu {
                         break;
                     case 4:
                         if(s.isLogeado() == true){
-                            Menu.menuModificar(lee, s);
+                            
+                            Menu.menuModificar(lee, s );
                         } else {
                             System.out.println("Esta funcion esta reservada para usuarios registrados.");
                         }
                         break;
                     case 5:
-                        Menu.menuPrincipal(s);
-                        //TODO: cerrar sesion
+                        if(s.isLogeado()){
+                        s.logout();
+                            System.out.println("Sesion cerrada");
+                        }else{
+                            System.out.println("No estaba iniciada la sesion");
+                         }
                         break;
                     case 6:
-                        if(!s.isLogeado() == true){
+                        if(!s.isLogeado()){
                             Cuenta cuentaIniciar = AccionesUsuario.iniciarSesion(lee);
                             s.logear(cuentaIniciar.getCorreo_electronico());                           
                         }
@@ -186,56 +192,61 @@ public class Menu {
         
         byte op;
         
-        System.out.println("----MENÚ MODIFICAR--- \n"
-                + "1. Modificar nombre \n"
-                + "2. Modificar apellidos \n"
-                + "3. Modificar correo \n"
-                + "4. Modificar dni \n"
-                + "5. Modificar fecha de nacimiento \n"
-                + "6. Modificar dirección \n"
-                + "7. Modificar usuario \n"
-                + "8. Modificar telefono \n"
-                + "9. Modificar tarjeta \n"
-                + "10. Volver al menú \n");
+        Session session = HibernateUtil.getSession();
+                            Cuenta cuenta=AccionesUsuario.getCuenta(s.getToken(), session);
+                            session.close();
+
+        do{
+            System.out.println("----MENÚ MODIFICAR--- \n"
+                    + "1. Modificar nombre \n"
+                    + "2. Modificar apellidos \n"
+                    + "3. Modificar correo \n"
+                    + "4. Modificar dni \n"
+                    + "5. Modificar fecha de nacimiento \n"
+                    + "6. Modificar dirección \n"
+                    + "7. Modificar usuario \n"
+                    + "8. Modificar telefono \n"
+                    + "9. Modificar tarjeta \n"
+                    + "10. Volver al menú \n");
         
-//        do{
-//            op = Byte.parseByte(lee.readLine());
-//            try{
-//                switch(op){
-//                    case 1:
-//                        Modificar.nombre(cliente);
-//                        break;
-//                    case 2:
-//                        Modificar.apellidos(cliente);
-//                        break;
-//                    case 3:
-//                        Modificar.correo(cliente);
-//                        break;
-//                    case 4:
-//                        Modificar.dni(cliente);
-//                        break;
-//                    case 5:
-//                        Modificar.fecha_nacimiento(cliente);
-//                        break;
-//                    case 6:
-//                        Modificar.dirección(cliente);
-//                        break;
-//                    case 7:
-//                        Modificar.usuario(cliente);
-//                        break;
-//                    case 8:
-//                        Modificar.telefono(cliente);
-//                        break;
-//                    case 9:
-//                        Modificar.tarjeta(cliente);
-//                        break;
-//                    case 10:
-//                          Menu.menuPrincipal();
-//                }
-//            }catch(Exception e){
-//                System.out.println(e.getMessage());
-//            }        
-//        } while(op!=10);
+
+            op = Byte.parseByte(lee.readLine());
+            try{
+                switch(op){
+                    case 1:
+                        Modificar.nombre(cuenta);
+                        break;
+                    case 2:
+                        Modificar.apellidos(cuenta);
+                        break;
+                    case 3:
+                        Modificar.correo(cuenta,s);
+                        break;
+                    case 4:
+                        Modificar.dni(cuenta);
+                        break;
+                    case 5:
+                        Modificar.fecha_nacimiento(cuenta);
+                        break;
+                    case 6:
+                        //Modificar.dirección(cuenta);
+                        break;
+                    case 7:
+                        //Modificar.usuario(cuenta);
+                        break;
+                    case 8:
+                        Modificar.telefono(cuenta);
+                        break;
+                    case 9:
+                        //Modificar.tarjeta(cuenta);
+                        break;
+                    case 10:
+                        //Menu.menuPrincipal();
+                }
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }        
+        } while(op!=10);
     }
     
 public static void menuAdministrador(Sesion s) throws IOException{

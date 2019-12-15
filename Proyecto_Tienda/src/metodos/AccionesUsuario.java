@@ -75,10 +75,6 @@ public class AccionesUsuario {
                         session.update(cuenta);
                         session.flush();
                         tx.commit();
-                        
-                        
-                        
-                        
                         System.out.println("Se ha añadido a tu cesta");
                         session.close();
                         break;

@@ -42,8 +42,7 @@ public class Cliente implements Serializable{
     @Column (name = "telefono", unique = true)
     private String telefono;
     
-    @OneToMany (cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Tarjeta> tarjetas;
+  
 
     public Cliente() {
     }
@@ -56,7 +55,7 @@ public class Cliente implements Serializable{
         this.correo_electronico = correo_electronico;
         this.fecha_nacimiento = fecha_nacimiento;
         this.telefono = telefono;
-        this.tarjetas = new ArrayList<>();
+        
     }
     // Este es de prueba
     public Cliente(String nombre, String apellidos, String dni, String correo_electronico, String telefono) {
@@ -124,14 +123,6 @@ public class Cliente implements Serializable{
         this.telefono = telefono;
     }
 
-    public List<Tarjeta> getTarjetas() {
-        return tarjetas;
-    }
-    
-
-    public void setTarjetas(List<Tarjeta> tarjetas) {
-        this.tarjetas = tarjetas;
-    }
 
     @Override
     public String toString() {
@@ -141,8 +132,7 @@ public class Cliente implements Serializable{
                 + "Correo_electronico=" + correo_electronico
                 + "Direccion=" + direccion
                 + "Fecha_nacimiento=" + fecha_nacimiento
-                + "Telefono=" + telefono
-                + "Tarjetas=" + tarjetas;
+                + "Telefono=" + telefono;
     }
     
 }
