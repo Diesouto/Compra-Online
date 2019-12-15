@@ -153,6 +153,47 @@ public class AccionesUsuario {
             
     }
     
+    //Falta controlar que no sea menor a 0 con el Listener
+    public static void reducirStockCesta(Sesion sesion) throws IOException {
+        
+        BufferedReader lee = new BufferedReader (new InputStreamReader (System.in));
+        Session session = HibernateUtil.getSession();
+        Cuenta cuenta = getCuenta(sesion.getToken(),session);
+        Pedido pedido = new Pedido();
+        
+        for(int i=0; i< cuenta.getCesta().getProductos().size(); i++){
+            
+            Producto producto = cuenta.getCesta().getProductos().get(i);
+            producto.addListener(pedido);
+            int stockPreVenta = producto.getStock();
+            int stockPostVenta = stockPreVenta -1;
+            
+            if(pedido.isPedir()){
+                    System.out.println("No hay Stock Suficiente, ¿desea realizar un pedido ahora?"
+                            + "\n1.Si"
+                            + "\n0.No");
+                    byte op=Byte.parseByte(lee.readLine());
+                    if(op==1){
+                        pedido=Altas.nuevoPedido(lee, producto);
+                        producto.addListener(pedido);
+                        session.beginTransaction();
+                        session.save(pedido);
+                        session.getTransaction().commit();
+                        System.out.println("\n - Pedido Registrado - \n");
+                    }else
+                        System.out.println("\n - Operación cancelada - \n");
+                }else{
+                    cuenta.getCesta().getProductos().get(i).setStock(stockPostVenta);
+                }    
+        }
+        cuenta.getCesta().vaciarCesta();
+        Transaction tx = session.beginTransaction();
+        session.update(cuenta);
+        session.flush();
+        tx.commit();
+        
+    }
+    
     public static void comprarCarro(Sesion sesion) {
         
         Session session = HibernateUtil.getSession();

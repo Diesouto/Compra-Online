@@ -84,7 +84,7 @@ public class Cesta implements Serializable{
     public void verProductos() {
         System.out.println("--TU CESTA--");
         for(int i=0; i< productos.size(); i++){
-            System.out.println(productos.get(i).toStringLite());
+            System.out.println(i +": " +productos.get(i).toStringLite());
         }
     }
     

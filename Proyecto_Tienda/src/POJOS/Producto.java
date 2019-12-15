@@ -31,7 +31,7 @@ public class Producto implements Serializable{
     private String descripcion;
     
     private PropertyChangeSupport propertySupport;
-    private final int stockMinimo = 0;
+    private int stockMinimo = 0;
 
     public Producto() {
     }
@@ -42,6 +42,7 @@ public class Producto implements Serializable{
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.propertySupport = new PropertyChangeSupport(this);
+        this.stockMinimo = 0;
     }
 
     public int getIdProducto() {
@@ -90,8 +91,8 @@ public class Producto implements Serializable{
 
     
     public String toStringLite() {
-        return "Producto de Id: " + idProducto 
-                + "\n\tNombre: " + nombre + '\n';
+        return "\n\tNombre: " + nombre + 
+               "\n\tPrecio: " +precio;
     }
 
     @Override

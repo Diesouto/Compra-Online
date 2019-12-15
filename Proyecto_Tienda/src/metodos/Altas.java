@@ -99,4 +99,21 @@ public class Altas {
         
         Guardar.guardarObjeto(producto);
     }
+    
+    public static Pedido nuevoPedido (BufferedReader leer, Producto producto) throws IOException {
+        
+        int id,cantidad;
+        java.sql.Date fechaPedido=new java.sql.Date(new java.util.Date().getTime());
+        
+        
+        System.out.println("Introducir cantidad a Pedir:");
+        cantidad=Integer.parseInt(leer.readLine());
+        
+        producto.setStock( producto.getStock() + cantidad );
+        
+        Pedido pedido = new Pedido(cantidad, fechaPedido, producto);
+        
+        return pedido;
+        
+    }
 }

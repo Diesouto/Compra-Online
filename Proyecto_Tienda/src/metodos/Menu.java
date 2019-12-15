@@ -84,20 +84,18 @@ public class Menu {
                     case 1:
                         Visualizar.productos();
                         break;
-                        
                     case 2:
                         AccionesUsuario.añadirProducto(s);
                         break;
                     case 3:
                         if(s.isLogeado() == true){
-                            Visualizar.cesta(s);
+                            Menu.menuCesta(s);
                         } else {
                             System.out.println("Esta funcion esta reservada para usuarios registrados.");
                         }
                         break;
                     case 4:
                         if(s.isLogeado() == true){
-                            
                             Menu.menuModificar(lee, s );
                         } else {
                             System.out.println("Esta funcion esta reservada para usuarios registrados.");
@@ -105,7 +103,7 @@ public class Menu {
                         break;
                     case 5:
                         if(s.isLogeado()){
-                        s.logout();
+                            s.logout();
                             System.out.println("Sesion cerrada");
                         }else{
                             System.out.println("No estaba iniciada la sesion");
@@ -134,6 +132,7 @@ public class Menu {
         } while(op!=10);
     } 
   
+    /*
     //TODO: arreglar
     public static void menuProducto(Sesion s) throws IOException{
         
@@ -151,6 +150,7 @@ public class Menu {
             try{
                 switch(op){
                     case 1:
+                        AccionesUsuario.añadirProducto(s);
                         break;
                     case 2:
 //                        Consultas.verDescripcion();
@@ -168,10 +168,13 @@ public class Menu {
             }        
         } while(op!=4);
     }
+    */
     
     public static void menuCesta(Sesion s) throws IOException{
         
         byte op;
+        
+        do{
         
         System.out.println("\n\tMENÚ CESTA \n"
                 + "1. Comprar \n"
@@ -182,19 +185,20 @@ public class Menu {
         
         op = Byte.parseByte(lee.readLine());
         
-        do{
             try{
                 switch(op){
                     case 1:
-                        AccionesUsuario.añadirProducto(s);
+                        AccionesUsuario.comprarCarro(s);
                         break;
                     case 2:
                         Visualizar.cesta(s);
                         break;    
                     case 3:
+                        Visualizar.cesta(s);
                         AccionesUsuario.quitarCesta(s);
                         break;
                     case 4:
+                        Visualizar.cesta(s);
                         AccionesUsuario.vaciarCesta(s);
                         break;
                     case 5:
@@ -213,9 +217,9 @@ public class Menu {
         byte op;
         
         Session session = HibernateUtil.getSession();
-                            Cuenta cuenta=AccionesUsuario.getCuenta(s.getToken(), session);
-                            Cliente cliente = AccionesUsuario.getCliente(s.getToken(), session);    
-                            session.close();
+        Cuenta cuenta=AccionesUsuario.getCuenta(s.getToken(), session);
+        Cliente cliente = AccionesUsuario.getCliente(s.getToken(), session);    
+        session.close();
 
         do{
             System.out.println("\n\tMENÚ MODIFICAR \n"
@@ -226,10 +230,10 @@ public class Menu {
                     + "5. Modificar fecha de nacimiento \n"
                     + "6. Modificar dirección \n"
                     + "7. Modificar telefono \n"
-                    + "8. Volver al menú \n");
-        
-
+                    + "8. Modificar saldo \n"
+                    + "9. Volver al menú \n");
             op = Byte.parseByte(lee.readLine());
+            
             try{
                 switch(op){
                     case 1:
@@ -248,26 +252,28 @@ public class Menu {
                         Modificar.fecha_nacimiento(cuenta);
                         break;
                     case 6:
-                        Modificar.dirección(cliente);
+                        Modificar.dirección(cuenta);
                         break;
                     case 7:
                         Modificar.telefono(cuenta);
                         break;
                     case 8:
+                        Modificar.saldo(cuenta);
+                        break;    
+                    case 9:
                         Menu.menuPrincipal(s);
                         break;
                 }    
             }catch(Exception e){
                 System.out.println(e.getMessage());
             }        
-        } while(op!=10);
+        } while(op!=9);
     }
     
 public static void menuAdministrador(Sesion s) throws IOException{
         
         byte op;
            
-        
         do{
             System.out.println("\n\tMENÚ ADMINISTRADOR \n"
                 + "1. Añadir productos \n"

@@ -113,7 +113,13 @@ public class Modificar {
         updateProducto(producto);
     }
     
-    
+    public static void saldo(Cuenta cuenta) throws IOException{
+        System.out.println("Introduce nuevo saldo: ");
+        float saldo = Float.parseFloat(lee.readLine());
+        
+        cuenta.getCliente().setSaldo(saldo);
+        updateCuenta(cuenta);
+    }
     
 
     public static void updateCuenta(Cuenta cuenta) {
