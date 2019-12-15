@@ -73,6 +73,7 @@ public class Modificar {
         cuenta.getCliente().setCorreo_electronico(email);
         cuenta.setCorreo_electronico(email);
         cuenta.setContraseña(contraseña);
+        updateCuenta(cuenta);
     }
     
     public static void telefono(Cuenta cuenta) throws IOException{
