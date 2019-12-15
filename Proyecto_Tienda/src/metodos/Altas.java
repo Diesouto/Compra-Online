@@ -71,9 +71,9 @@ public class Altas {
         System.out.println("Direccion:"
                 + "\nCalle, codPostal, Provincia. ");
         String direccion = lee.readLine();
-        float saldo = 0;
+       
         
-        cliente = new Cliente(nombre, apellidos, dni, correo, fecha_nacimiento, telefono, direccion, saldo);
+        cliente = new Cliente(nombre, apellidos, dni, correo, fecha_nacimiento, telefono, direccion);
         }
         sesion.close();
         return cliente;

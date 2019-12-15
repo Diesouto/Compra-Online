@@ -7,6 +7,8 @@ package POJOS;
 
 import java.util.Date;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 
 
@@ -43,13 +45,16 @@ public class Cliente implements Serializable{
     @Column (name = "saldo")
     private float saldo;
     
+    @OneToMany
+    private List<Factura> facturas;
+    
   
 
     public Cliente() {
     }
 
     
-    public Cliente(String nombre, String apellidos, String dni, String correo_electronico, Date fecha_nacimiento, String telefono, String direccion, float saldo) {
+    public Cliente(String nombre, String apellidos, String dni, String correo_electronico, Date fecha_nacimiento, String telefono, String direccion) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -57,7 +62,8 @@ public class Cliente implements Serializable{
         this.fecha_nacimiento = fecha_nacimiento;
         this.telefono = telefono;
         this.direccion = direccion;
-        this.saldo = saldo;
+        this.saldo = 0;
+        this.facturas = new ArrayList<>();
         
     }
 
