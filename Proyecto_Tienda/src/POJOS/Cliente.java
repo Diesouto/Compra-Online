@@ -45,7 +45,7 @@ public class Cliente implements Serializable{
     @Column (name = "saldo")
     private float saldo;
     
-    @OneToMany
+    @ManyToMany
     private List<Factura> facturas;
     
   
@@ -160,9 +160,5 @@ public class Cliente implements Serializable{
     @Override
     public String toString() {
         return "Cliente{" + "nombre=" + nombre + ", apellidos=" + apellidos + ", dni=" + dni + ", correo_electronico=" + correo_electronico + ", fecha_nacimiento=" + fecha_nacimiento + ", telefono=" + telefono + ", direccion=" + direccion + ", saldo=" + saldo + '}';
-    }
-
-    
-    
-    
+    } 
 }

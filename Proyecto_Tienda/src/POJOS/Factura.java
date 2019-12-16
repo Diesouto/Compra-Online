@@ -24,7 +24,7 @@ public class Factura implements Serializable{
     @Column (name = "precio")
     private float precio; 
     
-    @OneToMany ()
+    @ManyToMany ()
     private List<Producto> productos;
 
     public Factura() {

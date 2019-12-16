@@ -7,7 +7,7 @@ package POJOS;
 
 /**
  *
- * @author Xacobe
+ * @author
  * 
  * Esta clase maneja la sesion. Por defecto aparecemos como no logeados.
  * token es un identificador para la sesion (se piensa en usar el mail) para poder

@@ -206,10 +206,10 @@ public class AccionesUsuario {
             System.out.println("Comprado");
             cuenta.getCliente().getFacturas().add(factura);
             //reducirStockCesta(sesion);
-            vaciarCesta(sesion);
+            //vaciarCesta(sesion);
             Transaction tx = session.beginTransaction();
             session.save(factura);
-            //session.update(cuenta);
+            session.update(cuenta);
             session.flush();
             tx.commit();
         }

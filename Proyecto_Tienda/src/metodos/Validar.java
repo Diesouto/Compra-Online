@@ -62,7 +62,7 @@ public class Validar {
         do{
             try {
                 
-                System.out.print("Telefono (Opcional):");
+                System.out.print("Telefono: ");
                 telefono = lee.readLine();
         
                 if(telefono.length()!=9){

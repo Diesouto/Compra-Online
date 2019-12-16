@@ -29,7 +29,7 @@ public class Cesta implements Serializable{
     private Date fechaAñadido;
     
     /*No se pueden usar ArrayList en los mapeos*/
-    @OneToMany()
+    @ManyToMany()
     private List<Producto> productos;
 
     public Cesta() {

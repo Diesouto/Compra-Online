@@ -81,7 +81,4 @@ public class Pedido implements Serializable, PropertyChangeListener {
         System.out.println("Stock Nuevo:"+evt.getNewValue());
         setPedir(true);
     }
-    
-    
-
 }

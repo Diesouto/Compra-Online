@@ -41,8 +41,7 @@ public class Producto implements Serializable{
         this.stock = stock;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.propertySupport = new PropertyChangeSupport(this);
-        this.stockMinimo = 0;
+        
     }
 
     public int getIdProducto() {

@@ -124,6 +124,8 @@ public class Menu {
                         }
                         break;
                     case 10:
+                        HibernateUtil.cerrarSession();
+                        System.exit(0);
                         break;
                 }          
             }catch(Exception e){
@@ -132,44 +134,7 @@ public class Menu {
         } while(op!=10);
     } 
   
-    /*
-    //TODO: arreglar
-    public static void menuProducto(Sesion s) throws IOException{
-        
-        byte op;
-        
-        System.out.println("\n\tMENÚ PRODUCTO \n"
-                + "1. Añadir a la cesta \n"
-                + "2. Ver descripción \n"
-                + "3. Buscar producto \n"
-                + "4. Volver al menú \n");
-        
-       op = Byte.parseByte(lee.readLine());
-        
-        do{
-            try{
-                switch(op){
-                    case 1:
-                        AccionesUsuario.añadirProducto(s);
-                        break;
-                    case 2:
-//                        Consultas.verDescripcion();
-                        break;
-                    case 3:
-//                        Consultas.buscarProducto();
-                        break;
-                    case 4:
-                        Menu.menuPrincipal(s);
-                        break;
-                }
-                
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-            }        
-        } while(op!=4);
-    }
-    */
-    
+ 
     public static void menuCesta(Sesion s) throws IOException{
         
         byte op;
@@ -341,17 +306,5 @@ public static void menuAdministrador(Sesion s) throws IOException{
                 System.out.println(e.getMessage());
             }        
         } while(op!=5);
-    }
-    
-    public static byte menuConfirmar (BufferedReader lee) throws IOException {
-        
-        byte op;
-        System.out.println("¿Seguro que desea eliminar este producto?"
-                + "\n1.SI"
-                + "\n2.NO");
-        
-        op = Byte.parseByte(lee.readLine());
-        
-        return op;
     }
 }

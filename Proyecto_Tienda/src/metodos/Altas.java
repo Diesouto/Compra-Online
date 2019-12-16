@@ -71,7 +71,7 @@ public class Altas {
         System.out.print("Fecha de nacimiento (xx/xx/xxxx): \n");
         Date fecha_nacimiento = Validar.validarFecha();
         String telefono = Validar.telefono();
-        System.out.println("Direccion:"
+        System.out.println("Direccion: "
                 + "\nCalle, codPostal, Provincia. ");
         String direccion = lee.readLine();
        
